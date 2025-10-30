@@ -1,0 +1,16 @@
+@import './base.css';
+
+/* App container: single-column content area controlled in App.vue */
+#app {
+  margin: 0 auto;
+  padding: 0;
+  font-weight: normal;
+}
+
+a { color: inherit; }
+
+/* Remove scaffold demo layout rules */
+@media (min-width: 1024px) {
+  body { display: block; }
+  #app { display: block; padding: 0; }
+}

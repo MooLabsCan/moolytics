@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0ea5e9"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="56" height="40" rx="6" ry="6" stroke="url(#g)" stroke-width="3" fill="none"/>
+  <polyline points="10,38 22,28 30,34 44,20 54,28" stroke="url(#g)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="22" cy="28" r="3" fill="#22c55e"/>
+  <circle cx="30" cy="34" r="3" fill="#22c55e"/>
+  <circle cx="44" cy="20" r="3" fill="#22c55e"/>
+  <circle cx="54" cy="28" r="3" fill="#22c55e"/>
+  <text x="8" y="58" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#0f172a">M</text>
+</svg>
