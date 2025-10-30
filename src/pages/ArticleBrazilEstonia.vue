@@ -102,69 +102,76 @@ const formattedDate = computed(() => {
     </header>
 
     <template v-if="props.lang === 'en'">
-      <p>Brazil’s tax regime for businesses and dividends, once hailed as a simplification breakthrough, is increasingly coming under fire from economists and reform advocates — and for good reason. At its core lies a paradox: <strong>labour income is taxed heavily</strong>, while <strong>dividends are nearly tax-free</strong>. The result? A system that privileges capital over work, extraction over reinvestment, and wealth preservation over social mobility.</p>
+      <p><strong>Two tax systems. One obeys microeconomic law — and thrives. The other defies it — and rots.</strong></p>
 
       <hr />
-      <h2>Two Contrasting Models</h2>
+      <h2>Two Models, One Verdict</h2>
 
-      <h3>Brazil’s Model - Tax Profit, Exempt Dividends</h3>
-      <p>Brazilian companies pay roughly <strong>34 % combined corporate taxes</strong> on profit:</p>
+      <h3>🇧🇷 Brazil: Tax the Seed, Eat the Harvest</h3>
+      <p>Since 1996, Brazil has run a <strong>tax experiment in reverse</strong>:</p>
       <ul>
-        <li><strong>IRPJ</strong> (Corporate Income Tax) — 15 % on taxable profit</li>
-        <li><strong>CSLL</strong> (Social Contribution on Net Profit) — 9 %</li>
-        <li><strong>+10 % surtax</strong> on higher profits</li>
+        <li><strong>34 % corporate tax</strong> hits profits the moment they’re <em>earned</em> — before a single real can be reinvested.</li>
+        <li><strong>0 % on dividends</strong> — so the moment cash leaves the company, it’s <em>tax-free forever</em>.</li>
       </ul>
-      <p>These taxes apply <strong>on net profit</strong>, not on gross revenue — so it’s not a sales tax. But after paying this, companies can distribute profits to shareholders <strong>completely tax-free</strong>, a policy in place since 1996.</p>
-      <p>Economists now see this as <strong>regressive and outdated</strong>, rewarding those who receive dividends while salaried workers continue to shoulder the fiscal load.</p>
+      <p><strong>Result?</strong> A system that <em>punishes growth, rewards extraction, and starves the future</em>.</p>
+      <p>Economists don’t call it “simplification” anymore. They call it <strong>economic self-sabotage</strong>.</p>
 
-      <h3>Estonia’s Model - Tax Only on Distribution</h3>
-      <p>Estonia flipped the logic. Profits are <strong>untaxed when earned</strong> and only taxed when <strong>distributed</strong> — currently <strong>20 %</strong> (rising to 22 % in 2025).</p>
-      <p>This means a company can retain and reinvest profits freely, building capital, hiring staff, funding R&amp;D, or creating reserves for stability. Tax is paid only when profits are actually extracted as dividends — aligning taxation with <em>realized gain</em> rather than <em>booked profit</em>.</p>
+      <h3>🇪🇪 Estonia: Tax the Harvest, Let the Seed Grow</h3>
+      <p>In 2000, Estonia did the <strong>exact opposite</strong>:</p>
+      <ul>
+        <li><strong>0 % tax on profits</strong> — as long as they stay in the company.</li>
+        <li><strong>20 % (soon 22 %)</strong> — <em>only when profits are distributed</em> as dividends.</li>
+      </ul>
+      <p><strong>Result?</strong> A system that <em>obeys the iron law of compounding</em>: <strong>retain → reinvest → grow → tax later, on a bigger pie</strong>.</p>
+      <p>This isn’t ideology. It’s <strong>microeconomics 101, proven at scale</strong>.</p>
 
-      <h2>Comparing the Philosophies</h2>
+      <h2>The Law vs. The Lie: Side-by-Side</h2>
       <div class="table-wrapper">
         <table>
           <thead>
           <tr>
-            <th>Aspect</th>
-            <th>Brazil</th>
-            <th>Estonia</th>
+            <th>Economic Law</th>
+            <th>🇧🇷 Brazil (Defies It)</th>
+            <th>🇪🇪 Estonia (Obeys It)</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td>When tax is paid</td>
-            <td>When profit is earned</td>
-            <td>When profit is distributed</td>
+            <td>Tax timing</td>
+            <td><strong>At birth</strong> (profit earned)</td>
+            <td><strong>At death</strong> (profit distributed)</td>
           </tr>
           <tr>
-            <td>Dividend taxation</td>
-            <td>0 % (already taxed at corporate level)</td>
-            <td>20–22 % (only at distribution)</td>
+            <td>Dividend tax</td>
+            <td><strong>0 % — free extraction</strong></td>
+            <td><strong>20–22 % — only on payout</strong></td>
           </tr>
           <tr>
-            <td>Encouragement</td>
-            <td>Encourages dividends and cash extraction</td>
-            <td>Encourages reinvestment and capital retention</td>
+            <td>Incentive</td>
+            <td><strong>Pay out now</strong> → cash out, cash in</td>
+            <td><strong>Keep & grow</strong> → compound forever</td>
           </tr>
           <tr>
-            <td>Effect on inequality</td>
-            <td>Regressive — labour taxed heavily</td>
-            <td>More neutral — income taxed when realized</td>
+            <td>Worker vs. Owner</td>
+            <td><strong>Workers taxed to death</strong> (IRPF up to 27.5 % + INSS)</td>
+            <td><strong>Income taxed when realized</strong> — fairer, simpler</td>
           </tr>
           <tr>
-            <td>Administrative simplicity</td>
-            <td>Complex — multiple overlapping taxes</td>
-            <td>Very simple, transparent</td>
+            <td>Admin burden</td>
+            <td><strong>Labyrinth</strong> — IRPJ, CSLL, PIS/COFINS, ICMS, etc.</td>
+            <td><strong>One page</strong> — file once, pay on distribution</td>
           </tr>
           <tr>
-            <td>Impact on company stability</td>
-            <td>Weaker — firms often distribute profits</td>
-            <td>Stronger — firms retain cash buffers</td>
+            <td>Company survival</td>
+            <td><strong>Fragile</strong> — cash drained in good times</td>
+            <td><strong>Antifragile</strong> — cash hoards for crises</td>
           </tr>
           </tbody>
         </table>
       </div>
+
+      <p><strong>Brazil didn’t simplify taxes. It weaponized them against growth.</strong><br>
+        <strong>Estonia didn’t invent a model. It just stopped fighting the math.</strong></p>
 
       <h2>Why Brazil’s “Tax-on-Profit, Tax-Free Dividends” Model Is Failing</h2>
       <h3>1. It Rewards Extraction Over Reinvestment</h3>
@@ -323,69 +330,76 @@ const formattedDate = computed(() => {
     </template>
 
     <template v-else>
-      <p>O regime tributário brasileiro para empresas e dividendos, antes celebrado como um avanço simplificador, enfrenta críticas crescentes de economistas e reformistas — e com razão. No centro do debate está um paradoxo: <strong>renda do trabalho é altamente tributada</strong>, enquanto <strong>dividendos praticamente não pagam imposto</strong>. O resultado? Um sistema que privilegia o capital em detrimento do trabalho, a extração em vez do reinvestimento, e a preservação de riqueza em vez da mobilidade social.</p>
+      <p><strong>Dois sistemas tributários. Um obedece à lei microeconômica — e prospera. O outro a desafia — e apodrece.</strong></p>
 
       <hr />
-      <h2>Dois Modelos Contrastantes</h2>
+      <h2>Dois Modelos, Um Veredito</h2>
 
-      <h3>Modelo Brasileiro - Tributar Lucro, Isentar Dividendos</h3>
-      <p>Empresas brasileiras pagam cerca de <strong>34 % de impostos combinados sobre o lucro</strong>:</p>
+      <h3>🇧🇷 Brasil: Taxe a Semente, Coma a Colheita</h3>
+      <p>Desde 1996, o Brasil conduz um <strong>experimento tributário ao contrário</strong>:</p>
       <ul>
-        <li><strong>IRPJ</strong> — 15 % sobre lucro tributável</li>
-        <li><strong>CSLL</strong> — 9 % sobre lucro líquido</li>
-        <li><strong>+10 % de adicional</strong> sobre lucros maiores</li>
+        <li><strong>34 % de imposto corporativo</strong> incide sobre o lucro no momento em que ele <em>nasce</em> — antes que um real possa ser reinvestido.</li>
+        <li><strong>0 % sobre dividendos</strong> — assim que o dinheiro sai da empresa, fica <em>isento para sempre</em>.</li>
       </ul>
-      <p>Esses impostos incidem sobre o <strong>lucro líquido</strong>, não sobre a receita bruta — portanto, não se trata de um imposto sobre vendas. Após o pagamento, os lucros distribuídos aos acionistas são <strong>totalmente isentos de imposto</strong>, política vigente desde 1996.</p>
-      <p>Especialistas agora consideram isso <strong>regressivo e desatualizado</strong>, recompensando os detentores de dividendos enquanto trabalhadores assalariados arcam com a carga tributária.</p>
+      <p><strong>Resultado?</strong> Um sistema que <em>pune o crescimento, recompensa a extração e mata o futuro de fome</em>.</p>
+      <p>Economistas não o chamam mais de “simplificação”. Chamam de <strong>autossabotagem econômica</strong>.</p>
 
-      <h3>Modelo Estoniano - Tributar Apenas na Distribuição</h3>
-      <p>A Estônia inverteu a lógica. Lucros <strong>não são tributados quando obtidos</strong> e apenas pagam imposto quando <strong>distribuídos</strong> — atualmente <strong>20 %</strong> (subindo para 22 % em 2025).</p>
-      <p>Isso permite que a empresa retenha e reinvista lucros livremente, acumulando capital, contratando funcionários, financiando P&amp;D ou criando reservas de estabilidade. O imposto só incide quando os lucros são efetivamente retirados como dividendos — alinhando tributação ao ganho <em>realizado</em>, não apenas contábil.</p>
+      <h3>🇪🇪 Estônia: Taxe a Colheita, Deixe a Semente Crescer</h3>
+      <p>Em 2000, a Estônia fez o <strong>exato oposto</strong>:</p>
+      <ul>
+        <li><strong>0 % de imposto sobre lucros</strong> — enquanto permanecerem na empresa.</li>
+        <li><strong>20 % (em breve 22 %)</strong> — <em>apenas quando distribuídos</em> como dividendos.</li>
+      </ul>
+      <p><strong>Resultado?</strong> Um sistema que <em>obedece à lei de ferro da capitalização</em>: <strong>reter → reinvestir → crescer → tributar depois, sobre um bolo maior</strong>.</p>
+      <p>Não é ideologia. É <strong>microeconomia 101, comprovada em escala real</strong>.</p>
 
-      <h2>Comparando Filosofias</h2>
+      <h2>A Lei vs. A Mentira: Frente a Frente</h2>
       <div class="table-wrapper">
         <table>
           <thead>
-            <tr>
-              <th>Aspecto</th>
-              <th>Brasil</th>
-              <th>Estônia</th>
-            </tr>
+          <tr>
+            <th>Lei Econômica</th>
+            <th>🇧🇷 Brasil (Desafia)</th>
+            <th>🇪🇪 Estônia (Obedece)</th>
+          </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Momento da tributação</td>
-              <td>Ao obter lucro</td>
-              <td>Ao distribuir lucro</td>
-            </tr>
-            <tr>
-              <td>Tributação de dividendos</td>
-              <td>0 % (já tributado na empresa)</td>
-              <td>20–22 % (somente na distribuição)</td>
-            </tr>
-            <tr>
-              <td>Incentivo ao reinvestimento</td>
-              <td>Fraco — retirada é isenta</td>
-              <td>Forte — reinvestimento não tributado até saque</td>
-            </tr>
-            <tr>
-              <td>Impacto sobre desigualdade</td>
-              <td>Regressivo — trabalhadores mais onerados</td>
-              <td>Mais neutro — imposto incide na retirada de capital</td>
-            </tr>
-            <tr>
-              <td>Simplicidade administrativa</td>
-              <td>Complexo — múltiplos impostos sobre lucro</td>
-              <td>Muito simples e transparente</td>
-            </tr>
-            <tr>
-              <td>Estabilidade da empresa</td>
-              <td>Mais fraca — tende a distribuir lucros</td>
-              <td>Mais forte — empresas acumulam reservas</td>
-            </tr>
+          <tr>
+            <td>Momento do imposto</td>
+            <td><strong>No nascimento</strong> (lucro apurado)</td>
+            <td><strong>Na morte</strong> (lucro distribuído)</td>
+          </tr>
+          <tr>
+            <td>Tributação de dividendos</td>
+            <td><strong>0 % — extração livre</strong></td>
+            <td><strong>20–22 % — só no pagamento</strong></td>
+          </tr>
+          <tr>
+            <td>Incentivo</td>
+            <td><strong>Distribua já</strong> → saqueie agora</td>
+            <td><strong>Guarde e cresça</strong> → capitalize para sempre</td>
+          </tr>
+          <tr>
+            <td>Trabalhador vs. Dono</td>
+            <td><strong>Trabalhadores taxados até a morte</strong> (IRPF até 27,5 % + INSS)</td>
+            <td><strong>Renda tributada quando realizada</strong> — mais justo, mais simples</td>
+          </tr>
+          <tr>
+            <td>Carga administrativa</td>
+            <td><strong>Labirinto</strong> — IRPJ, CSLL, PIS/COFINS, ICMS, etc.</td>
+            <td><strong>Uma página</strong> — declare uma vez, pague na distribuição</td>
+          </tr>
+          <tr>
+            <td>Sobrevivência da empresa</td>
+            <td><strong>Frágil</strong> — caixa drenado nos bons tempos</td>
+            <td><strong>Antifrágil</strong> — reservas para crises</td>
+          </tr>
           </tbody>
         </table>
       </div>
+
+      <p><strong>O Brasil não simplificou os impostos. Ele os transformou em armas contra o crescimento.</strong><br>
+        <strong>A Estônia não inventou um modelo. Ela apenas parou de brigar com a matemática.</strong></p>
 
       <h2>💡 Por que o modelo brasileiro falha</h2>
       <ol>
