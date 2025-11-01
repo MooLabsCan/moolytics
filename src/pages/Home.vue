@@ -9,6 +9,7 @@ const t = computed(() => {
       intro: 'Bem-vindo ao Moolytics. Análises de dados, políticas públicas e mercados - com ênfase em geoeconomia.',
       sample: 'Artigos em destaque',
       article1: 'Brasil vs Estônia - Tributação de Dividendos',
+      article2: 'A Eficiência de Mercado Global - Alemanha em foco',
       read: 'Ler artigo'
     }
   }
@@ -17,6 +18,7 @@ const t = computed(() => {
     intro: 'Welcome to Moolytics. Data-driven analysis on public policy and markets - with a geo-economics lens.',
     sample: 'Featured Articles',
     article1: 'Brazil vs Estonia - Dividend Taxation',
+    article2: 'The Global Pivot to Market Efficiency (Germany)',
     read: 'Read article'
   }
 })
@@ -38,6 +40,16 @@ const t = computed(() => {
           <span v-else>Uma comparação entre o modelo brasileiro (tributa lucro/isenta dividendos) e o modelo estoniano (tributa na distribuição), e seus impactos no crescimento e na equidade.</span>
         </p>
         <a :href="`#/article/brazil-estonia/${props.lang}`" class="btn">{{ t.read }}</a>
+      </article>
+      <article class="card">
+        <header>
+          <h3>{{ t.article2 }}</h3>
+        </header>
+        <p>
+          <span v-if="props.lang==='en'">Why market efficiency matters now: lessons from Estonia and Singapore, and what Germany must fix to regain dynamism.</span>
+          <span v-else>Por que a eficiência de mercado importa agora: lições de Estônia e Cingapura, e o que a Alemanha precisa ajustar para recuperar dinamismo.</span>
+        </p>
+        <a :href="`#/article/market-efficiency-germany/${props.lang}`" class="btn">{{ t.read }}</a>
       </article>
     </div>
   </section>

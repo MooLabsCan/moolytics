@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import Home from './pages/Home.vue'
 import ArticleBrazilEstonia from './pages/ArticleBrazilEstonia.vue'
+import MarketEfficiencyGermany from './pages/MarketEfficiencyGermany.vue'
 
 const lang = ref(localStorage.getItem('lang') || (navigator.language?.startsWith('pt') ? 'pt' : 'en'))
 const route = ref('home')
@@ -131,6 +132,7 @@ const isHome = computed(() => route.value === 'home')
     <nav class="nav">
       <a href="#/" :class="{ active: isHome }">Home</a>
       <a :href="`#/article/brazil-estonia/${lang}`" :class="{ active: route === 'article' && params.id==='brazil-estonia' }">Brazil vs Estonia</a>
+      <a :href="`#/article/market-efficiency-germany/${lang}`" :class="{ active: route === 'article' && params.id==='market-efficiency-germany' }">Market Efficiency (Germany)</a>
     </nav>
     <div class="lang-switch">
       <button :class="{ active: lang === 'en' }" @click="setLang('en')">EN</button>
@@ -141,6 +143,7 @@ const isHome = computed(() => route.value === 'home')
   <main class="content">
     <Home v-if="isHome" :lang="lang" />
     <ArticleBrazilEstonia v-else-if="route === 'article' && params.id==='brazil-estonia'" :lang="lang" :id="params.id" />
+    <MarketEfficiencyGermany v-else-if="route === 'article' && params.id==='market-efficiency-germany'" />
     <div v-else>Not Found</div>
   </main>
 </template>

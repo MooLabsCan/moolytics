@@ -75,11 +75,11 @@ const formattedDate = computed(() => {
   <article class="article">
     <header style="display:flex;align-items:center;justify-content:space-between;gap:1rem; margin-bottom:0.75rem;">
       <div>
-        <h1 v-if="props.lang==='en'">Brazil’s Dividend Exemption: An Outdated Model Threatening Growth & Social Fairness</h1>
+        <h1 v-if="props.lang==='en'">Brazil’s Dividend Exemption: An Outdated Model Threatening Growth & Social Mobility</h1>
         <h1 v-else>Brasil e a Isenção de Dividendos: Um Modelo Desatualizado que Ameaça Crescimento e Justiça Social</h1>
         <div class="byline">
           <em v-if="props.lang==='en'">By Moo labs department of Economic Geography</em>
-          <em v-else>Por Moo labs department of Economic Geography</em>
+          <em v-else>Por Moolytics team</em>
         </div>
         <div class="pubdate">
           <small v-if="props.lang==='en'">Published on <time :datetime="isoDate">{{ formattedDate }}</time></small>
@@ -230,7 +230,7 @@ const formattedDate = computed(() => {
           <tr>
             <td>Ease of Doing Business rank (World Bank)</td>
             <td><strong>124th</strong></td>
-            <td><strong>18th</strong></td>
+            <td><strong>8th</strong></td>
             <td>—</td>
           </tr>
           <tr>
@@ -473,7 +473,7 @@ const formattedDate = computed(() => {
           <tr>
             <td>Ranking Doing Business (Banco Mundial)</td>
             <td><strong>124º</strong></td>
-            <td><strong>18º</strong></td>
+            <td><strong>8º</strong></td>
             <td>—</td>
           </tr>
           <tr>
