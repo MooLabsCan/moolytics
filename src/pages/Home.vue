@@ -10,6 +10,7 @@ const t = computed(() => {
       sample: 'Artigos em destaque',
       article1: 'Brasil vs Estônia - Tributação de Dividendos',
       article2: 'A Eficiência de Mercado Global - Alemanha em foco',
+      article3: 'Henry George — Rejeitado no Ocidente, Abraçado no Oriente',
       read: 'Ler artigo'
     }
   }
@@ -19,6 +20,7 @@ const t = computed(() => {
     sample: 'Featured Articles',
     article1: 'Brazil vs Estonia - Dividend Taxation',
     article2: 'The Global Pivot to Market Efficiency (Germany)',
+    article3: 'Henry George — Rejected in the West, Embraced in the East',
     read: 'Read article'
   }
 })
@@ -50,6 +52,16 @@ const t = computed(() => {
           <span v-else>Por que a eficiência de mercado importa agora: lições de Estônia e Cingapura, e o que a Alemanha precisa ajustar para recuperar dinamismo.</span>
         </p>
         <a :href="`#/article/market-efficiency-germany/${props.lang}`" class="btn">{{ t.read }}</a>
+      </article>
+      <article class="card">
+        <header>
+          <h3>{{ t.article3 }}</h3>
+        </header>
+        <p>
+          <span v-if="props.lang==='en'">Henry George’s land value tax—ignored in the West, implemented in the East. How Hong Kong and Singapore turned land rents into growth, housing, and low taxes.</span>
+          <span v-else>O imposto sobre valor da terra de Henry George — ignorado no Ocidente, implementado no Oriente. Como Hong Kong e Singapura converteram rendas da terra em crescimento, moradia e impostos baixos.</span>
+        </p>
+        <a :href="`#/article/george-east-west/${props.lang}`" class="btn">{{ t.read }}</a>
       </article>
     </div>
   </section>
