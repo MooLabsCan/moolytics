@@ -1,18 +1,85 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, computed, ref, onBeforeUnmount } from 'vue';
 
 const pageTitle = 'The Global Pivot to Market Efficiency: Adaptation in Progress, But Have We Truly Learned the Lessons?';
 
 onMounted(() => {
   document.title = pageTitle;
 });
+
+// Share button logic (mirrors ArticleBrazilEstonia.vue, simplified for single-language page)
+const fullUrl = computed(() => window.location.origin + window.location.pathname + window.location.hash)
+const shareTitle = computed(() => pageTitle)
+const shareText = computed(() => 'Analysis on why market efficiency matters now with lessons from Estonia, Singapore, and Germany.')
+
+const showShareMenu = ref(false)
+const shareMenuEl = ref<HTMLElement | null>(null)
+
+function toggleShareMenu() { showShareMenu.value = !showShareMenu.value }
+function closeShareMenu() { showShareMenu.value = false }
+
+function onDocumentClick(e: MouseEvent) {
+  if (!showShareMenu.value) return
+  const el = shareMenuEl.value
+  if (el && e.target instanceof Node && !el.contains(e.target)) {
+    showShareMenu.value = false
+  }
+}
+
+onMounted(() => document.addEventListener('click', onDocumentClick))
+onBeforeUnmount(() => document.removeEventListener('click', onDocumentClick))
+
+async function onShareClick() {
+  try {
+    if ((navigator as any).share) {
+      await (navigator as any).share({ title: shareTitle.value, text: shareText.value, url: fullUrl.value })
+      return
+    }
+  } catch (e) {
+    console.warn('Native share failed or was cancelled, falling back to menu:', e)
+  }
+  showShareMenu.value = true
+}
+
+async function copyLink() {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(fullUrl.value)
+      alert('Link copied!')
+    } else {
+      prompt('Copy the link:', fullUrl.value)
+    }
+  } catch (e) {
+    console.error('Clipboard error', e)
+    prompt('Copy the link:', fullUrl.value)
+  }
+}
+
+const encodedUrl = computed(() => encodeURIComponent(fullUrl.value))
+const encodedTitle = computed(() => encodeURIComponent(shareTitle.value))
+const encodedText = computed(() => encodeURIComponent(shareText.value))
 </script>
 
 <template>
   <div class="article">
-    <header>
-      <h1>The Global Pivot to Market Efficiency: Adaptation in Progress, But Have We Truly Learned the Lessons?</h1>
-      <p class="byline">By Moolytics team | November 1, 2025</p>
+    <header style="display:flex;align-items:center;justify-content:space-between;gap:1rem; margin-bottom:0.75rem;">
+      <div>
+        <h1>The Global Pivot to Market Efficiency: Adaptation in Progress, But Have We Truly Learned the Lessons?</h1>
+        <p class="byline">By Moolytics team | November 1, 2025</p>
+      </div>
+      <div class="share" ref="shareMenuEl" style="position:relative;">
+        <button @click="onShareClick" :aria-expanded="showShareMenu ? 'true' : 'false'" aria-haspopup="menu" title="Share" style="border:1px solid var(--color-border);background:transparent;border-radius:6px;padding:0.35rem 0.5rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.35rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <span>Share</span>
+        </button>
+        <div v-if="showShareMenu" class="share-menu" role="menu">
+          <button class="share-item" role="menuitem" @click="copyLink">Copy link</button>
+          <a class="share-item" role="menuitem" :href="`mailto:?subject=${encodedTitle}&body=${encodedText}%0A%0A${encodedUrl}`" target="_blank" rel="noopener">Email</a>
+          <a class="share-item" role="menuitem" :href="`https://api.whatsapp.com/send?text=${encodedTitle}%20-%20${encodedUrl}`" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="share-item" role="menuitem" :href="`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`" target="_blank" rel="noopener">X / Twitter</a>
+          <a class="share-item" role="menuitem" :href="`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
     </header>
 
     <article>
@@ -77,8 +144,8 @@ onMounted(() => {
     </article>
 
     <footer>
-      <p>© 2025 Grok Insights. All rights reserved. This article is for informational purposes only.</p>
-    </footer>
+      <p>© 2025  All rights reserved. This article is for informational purposes only.</p>
+    </footer>Moolytics.
   </div>
 </template>
 
@@ -176,4 +243,29 @@ footer {
   h1 { font-size: 1.8rem; }
   table, th, td { font-size: 0.85rem; }
 }
+.share-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 180px;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  padding: 0.25rem;
+  z-index: 20;
+}
+.share-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.share-item:hover { background: var(--color-background-soft); }
 </style>

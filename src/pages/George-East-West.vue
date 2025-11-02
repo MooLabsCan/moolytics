@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, computed, ref, onBeforeUnmount } from 'vue'
 const props = defineProps({ lang: { type: String, default: 'en' }, id: { type: String, default: 'george-east-west' } })
 
 onMounted(() => {
@@ -7,15 +7,87 @@ onMounted(() => {
     ? 'Henry George: Rejeitado no Ocidente, Abraçado no Oriente'
     : 'Henry George: Prophet Rejected in the West, Embraced in the East'
 })
+
+// Share button logic (parity with ArticleBrazilEstonia.vue)
+const canonicalUrl = computed(() => `#/${['article', props.id, props.lang].filter(Boolean).join('/')}`)
+const fullUrl = computed(() => window.location.origin + window.location.pathname + canonicalUrl.value)
+
+const shareTitle = computed(() => props.lang === 'pt'
+  ? 'Henry George — Rejeitado no Ocidente, Abraçado no Oriente'
+  : 'Henry George — Rejected in the West, Embraced in the East')
+const shareText = computed(() => props.lang === 'pt'
+  ? 'Como Hong Kong e Singapura transformaram rendas da terra em crescimento, moradia e impostos baixos.'
+  : 'How Hong Kong and Singapore turned land rents into growth, housing, and low taxes.')
+
+const showShareMenu = ref(false)
+const shareMenuEl = ref<HTMLElement | null>(null)
+
+function onDocumentClick(e: MouseEvent) {
+  if (!showShareMenu.value) return
+  const el = shareMenuEl.value
+  if (el && e.target instanceof Node && !el.contains(e.target)) showShareMenu.value = false
+}
+
+onMounted(() => document.addEventListener('click', onDocumentClick))
+onBeforeUnmount(() => document.removeEventListener('click', onDocumentClick))
+
+async function onShareClick() {
+  try {
+    if ((navigator as any).share) {
+      await (navigator as any).share({ title: shareTitle.value, text: shareText.value, url: fullUrl.value })
+      return
+    }
+  } catch (e) {
+    console.warn('Native share failed or was cancelled, falling back to menu:', e)
+  }
+  showShareMenu.value = true
+}
+
+async function copyLink() {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(fullUrl.value)
+      alert(props.lang === 'pt' ? 'Link copiado!' : 'Link copied!')
+    } else {
+      prompt(props.lang === 'pt' ? 'Copie o link:' : 'Copy the link:', fullUrl.value)
+    }
+  } catch (e) {
+    console.error('Clipboard error', e)
+    prompt(props.lang === 'pt' ? 'Copie o link:' : 'Copy the link:', fullUrl.value)
+  }
+}
+
+const encodedUrl = computed(() => encodeURIComponent(fullUrl.value))
+const encodedTitle = computed(() => encodeURIComponent(shareTitle.value))
+const encodedText = computed(() => encodeURIComponent(shareText.value))
 </script>
 
 <template>
   <article class="article">
 
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:1rem; margin-bottom:0.75rem;">
+    <div>
+      <h1 v-if="props.lang==='en'">Henry George, the Prophet Rejected by His Own but Embraced in the East</h1>
+      <h1 v-else>Henry George: O Profeta Rejeitado no Ocidente, Abraçado no Oriente</h1>
+    </div>
+    <div class="share" ref="shareMenuEl" style="position:relative;">
+      <button @click="onShareClick" :aria-expanded="showShareMenu ? 'true' : 'false'" aria-haspopup="menu" :title="props.lang==='pt' ? 'Compartilhar' : 'Share'" style="border:1px solid var(--color-border);background:transparent;border-radius:6px;padding:0.35rem 0.5rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.35rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span>{{ props.lang==='pt' ? 'Compartilhar' : 'Share' }}</span>
+      </button>
+      <div v-if="showShareMenu" class="share-menu" role="menu">
+        <button class="share-item" role="menuitem" @click="copyLink">{{ props.lang==='pt' ? 'Copiar link' : 'Copy link' }}</button>
+        <a class="share-item" role="menuitem" :href="`mailto:?subject=${encodedTitle}&body=${encodedText}%0A%0A${encodedUrl}`" target="_blank" rel="noopener">Email</a>
+        <a class="share-item" role="menuitem" :href="`https://api.whatsapp.com/send?text=${encodedTitle}%20-%20${encodedUrl}`" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="share-item" role="menuitem" :href="`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`" target="_blank" rel="noopener">X / Twitter</a>
+        <a class="share-item" role="menuitem" :href="`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
   <!-- English Version -->
   <template v-if="props.lang === 'en'">
 
-    <h1>Henry George, the Prophet Rejected by His Own but Embraced in the East</h1>
 
     <blockquote>
       <p><em>“The equal right of all men to the use of land is as clear as their equal right to breathe the air—it is a right proclaimed by the fact of their existence.”</em></p>
@@ -369,6 +441,9 @@ onMounted(() => {
   </template>
 
 </article>
+  <footer>
+    <p>© 2025  All rights reserved. This article is for informational purposes only.</p>
+  </footer>Moolytics.
 </template>
 
 <style scoped>
@@ -388,4 +463,45 @@ th { background: #0077b6; color: white; }
 .epilogue { background: #f0f8ff; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; }
 .further-reading { font-size: 0.9rem; color: #555; margin-top: 3rem; }
 @media (max-width: 600px) { .article { font-size: 16px; } table, th, td { font-size: 14px; } }
+.article {
+  font-family: 'Georgia', serif;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  color: #333;
+}
+ h1, h2, h3 { font-family: 'Helvetica Neue', sans-serif; color: #1a1a1a; }
+ blockquote { margin: 1.5rem 0; padding: 1rem 1.5rem; background: #f9f9f9; border-left: 5px solid #0077b6; font-style: italic; }
+ table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+ th, td { border: 1px solid #ddd; padding: 0.75rem; text-align: left; }
+ th { background: #0077b6; color: white; }
+ .epilogue { background: #f0f8ff; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; }
+ .further-reading { font-size: 0.9rem; color: #555; margin-top: 3rem; }
+ @media (max-width: 600px) { .article { font-size: 16px; } table, th, td { font-size: 14px; } }
+.share-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 180px;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  padding: 0.25rem;
+  z-index: 20;
+}
+.share-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.share-item:hover { background: var(--color-background-soft); }
 </style>
