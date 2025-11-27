@@ -11,6 +11,7 @@ const t = computed(() => {
       article1: 'Brasil vs Estônia - Tributação de Dividendos',
       article2: 'A Eficiência de Mercado Global - Alemanha em foco',
       article3: 'Henry George — Rejeitado no Ocidente, Abraçado no Oriente',
+      article4: 'O Custo Duplo do Sistema Punitivo',
       read: 'Ler artigo'
     }
   }
@@ -21,6 +22,7 @@ const t = computed(() => {
     article1: 'Brazil vs Estonia - Dividend Taxation',
     article2: 'The Global Pivot to Market Efficiency (Germany)',
     article3: 'Henry George — Rejected in the West, Embraced in the East',
+    article4: 'The Dual Cost of the Punitive System',
     read: 'Read article'
   }
 })
@@ -62,6 +64,16 @@ const t = computed(() => {
           <span v-else>O imposto sobre valor da terra de Henry George — ignorado no Ocidente, implementado no Oriente. Como Hong Kong e Singapura converteram rendas da terra em crescimento, moradia e impostos baixos.</span>
         </p>
         <a :href="`#/article/george-east-west/${props.lang}`" class="btn">{{ t.read }}</a>
+      </article>
+      <article class="card">
+        <header>
+          <h3>{{ t.article4 }}</h3>
+        </header>
+        <p>
+          <span v-if="props.lang==='en'">A citizen-first look at Brazil’s punitive system: why society pays twice when prisons fail, and what reforms could change that.</span>
+          <span v-else>Um olhar centrado no cidadão sobre o sistema punitivo: por que a sociedade paga duas vezes quando a cadeia falha e quais reformas podem mudar isso.</span>
+        </p>
+        <a :href="`#/article/society-failed-prisons/${props.lang}`" class="btn">{{ t.read }}</a>
       </article>
     </div>
   </section>
