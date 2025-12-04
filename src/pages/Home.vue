@@ -12,6 +12,7 @@ const t = computed(() => {
       article2: 'A Eficiência de Mercado Global - Alemanha em foco',
       article3: 'Henry George — Rejeitado no Ocidente, Abraçado no Oriente',
       article4: 'O Custo Duplo do Sistema Punitivo',
+      article5: 'A Disputa Oculta: Impostos sobre Folha (Empregador vs Empregado)',
       read: 'Ler artigo'
     }
   }
@@ -23,6 +24,7 @@ const t = computed(() => {
     article2: 'The Global Pivot to Market Efficiency (Germany)',
     article3: 'Henry George — Rejected in the West, Embraced in the East',
     article4: 'The Dual Cost of the Punitive System',
+    article5: 'The Hidden Tug-of-War: Employer vs Employee Payroll Taxes',
     read: 'Read article'
   }
 })
@@ -74,6 +76,16 @@ const t = computed(() => {
           <span v-else>Um olhar centrado no cidadão sobre o sistema punitivo: por que a sociedade paga duas vezes quando a cadeia falha e quais reformas podem mudar isso.</span>
         </p>
         <a :href="`#/article/society-failed-prisons/${props.lang}`" class="btn">{{ t.read }}</a>
+      </article>
+      <article class="card">
+        <header>
+          <h3>{{ t.article5 }}</h3>
+        </header>
+        <p>
+          <span v-if="props.lang==='en'">Employer vs employee payroll taxes: what incidence research says about wage growth, competitiveness, and policy design. Includes an interactive chart.</span>
+          <span v-else>Impostos sobre folha do empregador vs empregado: o que a pesquisa de incidência diz sobre crescimento salarial, competitividade e desenho de políticas. Inclui gráfico interativo.</span>
+        </p>
+        <a :href="`#/article/employer-fines/${props.lang}`" class="btn">{{ t.read }}</a>
       </article>
     </div>
   </section>

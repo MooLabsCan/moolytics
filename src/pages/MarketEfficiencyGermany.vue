@@ -135,6 +135,49 @@ const encodedText = computed(() => encodeURIComponent(shareText.value))
         </tbody>
       </table>
 
+      <!-- Added: Supplemental comparison table beneath the current table -->
+      <table>
+        <thead>
+        <tr>
+          <th>Policy Lever</th>
+          <th>Estonia</th>
+          <th>Singapore</th>
+          <th>Germany</th>
+          <th>Expected Efficiency Effect</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Business Administration</td>
+          <td>One‑stop e‑gov; 18‑min registration</td>
+          <td>15‑min setup; sandbox regulation</td>
+          <td>Growth Opportunities Act trims red tape</td>
+          <td>Faster firm creation, lower compliance costs</td>
+        </tr>
+        <tr>
+          <td>Public Spending Discipline</td>
+          <td>Lean administration; digital-by-default</td>
+          <td>~18% of GDP; zero‑based budgeting</td>
+          <td>Debt brake debate; targeted incentives</td>
+          <td>Higher allocative efficiency; room for private investment</td>
+        </tr>
+        <tr>
+          <td>Labor Market Flexibility</td>
+          <td>Tech‑driven services; EU mobility</td>
+          <td>Progressive wage ladders; skills accounts</td>
+          <td>Rigid reallocation; reforms in progress</td>
+          <td>Faster matching; productivity gains</td>
+        </tr>
+        <tr>
+          <td>Digital Infrastructure</td>
+          <td>X‑Road interoperability; 99% online services</td>
+          <td>Smart Nation 2.0; open GovTech stacks</td>
+          <td>EU TSI support; gradual digitization</td>
+          <td>Lower transaction costs; transparency</td>
+        </tr>
+        </tbody>
+      </table>
+
       <h2>The Lingering Question: Have We Learned Our Lessons?</h2>
       <p>History whispers warnings: 19th-century advanced economies thrived on low-spend, high-investment models before welfare expansions ballooned inefficiencies.<a href="#" class="citation">[27]</a> Post-2008 bailouts taught fiscal prudence, yet 2025's rising debts (e.g., Mexico's 6% deficit) risk repeats.<a href="#" class="citation">[11]</a> Protectionism's double edge—short-term shielding vs. long-term stagnation—is evident in today's tariffs, which the UN notes foster complacency if prolonged.<a href="#" class="citation">[25]</a> The IMF laments eroding productivity from shielded sectors, urging complementary reforms to avoid "special pleadings" over entrepreneurship.<a href="#" class="citation">[34]</a></p>
       <p>Progress is real: <strong>97 million "markets of tomorrow" jobs by 2025</strong> demand reskilling, as in Singapore's credits or Estonia's tech focus.<a href="#" class="citation">[17]</a> Davos 2025's "Reimagining Growth" theme spotlights AI for trade efficiency, from supply chains to compliance.<a href="#" class="citation">[19]</a> But divergences persist—low-income nations grow at <strong>5.3%</strong>, yet lag in convergence due to volatile revenues.<a href="#" class="citation">[12]</a> Brookings reflects: Resilience post-shocks is remarkable, but without redoubled reforms, 2025 risks a "<em>limping</em>" recovery.<a href="#" class="citation">[30]</a></p>
