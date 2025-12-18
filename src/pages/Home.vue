@@ -13,6 +13,7 @@ const t = computed(() => {
       article3: 'Henry George — Rejeitado no Ocidente, Abraçado no Oriente',
       article4: 'O Custo Duplo do Sistema Punitivo',
       article5: 'A Disputa Oculta: Impostos sobre Folha (Empregador vs Empregado)',
+      article6: 'Política vs Eficiência — O que a lei promove é o que o mercado colhe',
       read: 'Ler artigo'
     }
   }
@@ -25,6 +26,7 @@ const t = computed(() => {
     article3: 'Henry George — Rejected in the West, Embraced in the East',
     article4: 'The Dual Cost of the Punitive System',
     article5: 'The Hidden Tug-of-War: Employer vs Employee Payroll Taxes',
+    article6: 'Policy vs Efficiency — Incentives, markets, and outcomes',
     read: 'Read article'
   }
 })
@@ -86,6 +88,16 @@ const t = computed(() => {
           <span v-else>Impostos sobre folha do empregador vs empregado: o que a pesquisa de incidência diz sobre crescimento salarial, competitividade e desenho de políticas. Inclui gráfico interativo.</span>
         </p>
         <a :href="`#/article/employer-fines/${props.lang}`" class="btn">{{ t.read }}</a>
+      </article>
+      <article class="card">
+        <header>
+          <h3>{{ t.article6 }}</h3>
+        </header>
+        <p>
+          <span v-if="props.lang==='en'">A data-first scoreboard comparing laws by their incentive effects on market efficiency, mobility, jobs, and wages — plus a new article draft.</span>
+          <span v-else>Um placar baseado em dados que compara leis pelos incentivos que criam sobre eficiência de mercado, mobilidade, empregos e salários — inclui novo rascunho de artigo.</span>
+        </p>
+        <a :href="`#/article/policy-vs-efficiency/${props.lang}`" class="btn">{{ t.read }}</a>
       </article>
     </div>
   </section>

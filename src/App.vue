@@ -6,6 +6,7 @@ import MarketEfficiencyGermany from './pages/MarketEfficiencyGermany.vue'
 import GeorgeEastWest from './pages/George-East-West.vue'
 import SocietyFailedPrisons from './pages/Society-Failed-Prisons.vue'
 import EmployerFines from './pages/employerFines.vue'
+import PolicyVsEfficiency from './pages/PolicyVsEfficiency.vue'
 
 const lang = ref(localStorage.getItem('lang') || (navigator.language?.startsWith('pt') ? 'pt' : 'en'))
 const route = ref('home')
@@ -139,6 +140,7 @@ const isHome = computed(() => route.value === 'home')
       <a :href="`#/article/george-east-west/${lang}`" :class="{ active: route === 'article' && params.id==='george-east-west' }">Henry George (East vs West)</a>
       <a :href="`#/article/society-failed-prisons/${lang}`" :class="{ active: route === 'article' && params.id==='society-failed-prisons' }">Society Failed Prisons</a>
       <a :href="`#/article/employer-fines/${lang}`" :class="{ active: route === 'article' && params.id==='employer-fines' }">Employer Payroll Taxes</a>
+      <a :href="`#/article/policy-vs-efficiency/${lang}`" :class="{ active: route === 'article' && params.id==='policy-vs-efficiency' }">Policy vs Efficiency</a>
     </nav>
     <div class="lang-switch">
       <button :class="{ active: lang === 'en' }" @click="setLang('en')">EN</button>
@@ -153,6 +155,7 @@ const isHome = computed(() => route.value === 'home')
     <GeorgeEastWest v-else-if="route === 'article' && params.id==='george-east-west'" :lang="lang" :id="params.id" />
     <SocietyFailedPrisons v-else-if="route === 'article' && params.id==='society-failed-prisons'" :lang="lang" :id="params.id" />
     <EmployerFines v-else-if="route === 'article' && params.id==='employer-fines'" :lang="lang" />
+    <PolicyVsEfficiency v-else-if="route === 'article' && params.id==='policy-vs-efficiency'" :lang="lang" :id="params.id" />
     <div v-else>Not Found</div>
   </main>
 </template>
