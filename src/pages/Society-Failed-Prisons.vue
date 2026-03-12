@@ -51,13 +51,13 @@ const encodedUrl = computed(() => encodeURIComponent(fullUrl.value))
 const encodedTitle = computed(() => encodeURIComponent(shareTitle.value))
 const encodedText = computed(() => encodeURIComponent(shareText.value))
 
-// Publication date (today), localized per language
-const today = new Date()
-const isoDate = today.toISOString().split('T')[0]
+// Publication date (fixed to March 12, 2026), localized per language
+const pubDate = new Date('2026-03-12T00:00:00Z')
+const isoDate = '2026-03-12'
 const formattedDate = computed(() => {
   const locale = props.lang === 'pt' ? 'pt-BR' : 'en-US'
-  const fmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', day: 'numeric' })
-  return fmt.format(today)
+  const fmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+  return fmt.format(pubDate)
 })
 </script>
 

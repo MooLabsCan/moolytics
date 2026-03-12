@@ -14,6 +14,8 @@ const t = computed(() => {
       article4: 'O Custo Duplo do Sistema Punitivo',
       article5: 'A Disputa Oculta: Impostos sobre Folha (Empregador vs Empregado)',
       article6: 'Política vs Eficiência — O que a lei promove é o que o mercado colhe',
+      article7: 'Finlândia — KOK vs PS: Sauna pró‑mercado',
+      article8: 'Canadá — Reguladores vs Classe Média (TSXV & investidores de varejo)',
       read: 'Ler artigo'
     }
   }
@@ -27,6 +29,8 @@ const t = computed(() => {
     article4: 'The Dual Cost of the Punitive System',
     article5: 'The Hidden Tug-of-War: Employer vs Employee Payroll Taxes',
     article6: 'Policy vs Efficiency — Incentives, markets, and outcomes',
+    article7: "Finland — KOK vs PS: Free‑Market Sauna",
+    article8: 'Canada — Venture Regulation vs the Middle Class',
     read: 'Read article'
   }
 })
@@ -98,6 +102,26 @@ const t = computed(() => {
           <span v-else>Um placar baseado em dados que compara leis pelos incentivos que criam sobre eficiência de mercado, mobilidade, empregos e salários — inclui novo rascunho de artigo.</span>
         </p>
         <a :href="`#/article/policy-vs-efficiency/${props.lang}`" class="btn">{{ t.read }}</a>
+      </article>
+      <article class="card">
+        <header>
+          <h3>{{ t.article7 }}</h3>
+        </header>
+        <p>
+          <span v-if="props.lang==='en'">Finland’s 2023 smart split: market‑minded voters back KOK’s pro‑efficiency reforms while populists chase short‑term noise. A light, data‑tinged read.</span>
+          <span v-else>A divisão inteligente na Finlândia (2023): eleitores pró‑mercado apoiam reformas do KOK enquanto o populismo persegue o curto prazo. Leitura leve com dados.</span>
+        </p>
+        <a :href="`#/article/finland-kok/${props.lang}`" class="btn">{{ t.read }}</a>
+      </article>
+      <article class="card">
+        <header>
+          <h3>{{ t.article8 }}</h3>
+        </header>
+        <p>
+          <span v-if="props.lang==='en'">Canada’s regulatory turn shut retail investors out of early‑stage markets and choked the TSXV. How “protection” hollowed the middle class.</span>
+          <span v-else>A guinada regulatória no Canadá excluiu o varejo dos mercados iniciais e asfixiou a TSXV. Como a “proteção” esvaziou a classe média.</span>
+        </p>
+        <a :href="`#/article/canadasabatage/${props.lang}`" class="btn">{{ t.read }}</a>
       </article>
     </div>
   </section>

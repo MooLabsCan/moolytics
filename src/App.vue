@@ -7,14 +7,27 @@ import GeorgeEastWest from './pages/George-East-West.vue'
 import SocietyFailedPrisons from './pages/Society-Failed-Prisons.vue'
 import EmployerFines from './pages/employerFines.vue'
 import PolicyVsEfficiency from './pages/PolicyVsEfficiency.vue'
+import Canadasabatage from './pages/Canadasabatage.vue'
 
-const lang = ref(localStorage.getItem('lang') || (navigator.language?.startsWith('pt') ? 'pt' : 'en'))
+function normalizeLang(l) {
+  const v = String(l || '').toLowerCase()
+  if (v === 'pt' || v.startsWith('pt-')) return 'pt'
+  // Allow French only for the Canada sabotage article route
+  if (v === 'fr' || v.startsWith('fr-')) {
+    const hash = window.location.hash || '#/'
+    if (/^#\/article\/canadasabatage\//i.test(hash)) return 'fr'
+  }
+  return 'en'
+}
+
+const lang = ref(normalizeLang(localStorage.getItem('lang') || (navigator.language?.startsWith('pt') ? 'pt' : 'en')))
 const route = ref('home')
 const params = ref({})
 
 function setLang(l) {
-  lang.value = l
-  localStorage.setItem('lang', l)
+  const v = normalizeLang(l)
+  lang.value = v
+  localStorage.setItem('lang', v)
 }
 
 function parseHashQuery(q) {
@@ -141,10 +154,12 @@ const isHome = computed(() => route.value === 'home')
       <a :href="`#/article/society-failed-prisons/${lang}`" :class="{ active: route === 'article' && params.id==='society-failed-prisons' }">Society Failed Prisons</a>
       <a :href="`#/article/employer-fines/${lang}`" :class="{ active: route === 'article' && params.id==='employer-fines' }">Employer Payroll Taxes</a>
       <a :href="`#/article/policy-vs-efficiency/${lang}`" :class="{ active: route === 'article' && params.id==='policy-vs-efficiency' }">Policy vs Efficiency</a>
+      <a :href="`#/article/canadasabatage/${lang}`" :class="{ active: route === 'article' && params.id==='canadasabatage' }">Canada: Venture Regulation</a>
     </nav>
     <div class="lang-switch">
       <button :class="{ active: lang === 'en' }" @click="setLang('en')">EN</button>
       <button :class="{ active: lang === 'pt' }" @click="setLang('pt')">PT</button>
+      <button v-if="route === 'article' && params.id==='canadasabatage'" :class="{ active: lang === 'fr' }" @click="setLang('fr')">FR</button>
     </div>
   </header>
 
@@ -156,6 +171,7 @@ const isHome = computed(() => route.value === 'home')
     <SocietyFailedPrisons v-else-if="route === 'article' && params.id==='society-failed-prisons'" :lang="lang" :id="params.id" />
     <EmployerFines v-else-if="route === 'article' && params.id==='employer-fines'" :lang="lang" />
     <PolicyVsEfficiency v-else-if="route === 'article' && params.id==='policy-vs-efficiency'" :lang="lang" :id="params.id" />
+    <Canadasabatage v-else-if="route === 'article' && params.id==='canadasabatage'" :lang="lang" :id="params.id" />
     <div v-else>Not Found</div>
   </main>
 </template>
@@ -206,4 +222,12 @@ h1, h2, h3 { font-family: Georgia, 'Times New Roman', Times, serif; }
 .article h1 { font-size: 2rem; line-height: 1.25; margin-bottom: 0.25rem; }
 .byline { color: var(--vt-c-text-light-2); font-style: italic; margin-bottom: 1rem; }
 .article p { margin: 0.75rem 0; }
+
+/* Add small line breaks/spacing between sections for readability */
+.article h2 { margin-top: 1.1rem; margin-bottom: 0.35rem; }
+.article h3 { margin-top: 0.9rem; margin-bottom: 0.25rem; }
+/* Ensure first paragraph after a heading has a touch more breathing room */
+.article h2 + p, .article h3 + p { margin-top: 0.4rem; }
+/* Add spacing between major blocks if headings follow paragraphs directly */
+.article p + h2, .article p + h3 { margin-top: 1rem; }
 </style>
