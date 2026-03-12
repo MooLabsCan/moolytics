@@ -146,16 +146,6 @@ const isHome = computed(() => route.value === 'home')
       <img src="/moolytics-logo.svg" alt="Moolytics logo" class="logo" />
       <span class="brand-text">Moolytics</span>
     </div>
-    <nav class="nav">
-      <a href="#/" :class="{ active: isHome }">Home</a>
-      <a :href="`#/article/brazil-estonia/${lang}`" :class="{ active: route === 'article' && params.id==='brazil-estonia' }">Brazil vs Estonia</a>
-      <a :href="`#/article/market-efficiency-germany/${lang}`" :class="{ active: route === 'article' && params.id==='market-efficiency-germany' }">Market Efficiency (Germany)</a>
-      <a :href="`#/article/george-east-west/${lang}`" :class="{ active: route === 'article' && params.id==='george-east-west' }">Henry George (East vs West)</a>
-      <a :href="`#/article/society-failed-prisons/${lang}`" :class="{ active: route === 'article' && params.id==='society-failed-prisons' }">Society Failed Prisons</a>
-      <a :href="`#/article/employer-fines/${lang}`" :class="{ active: route === 'article' && params.id==='employer-fines' }">Employer Payroll Taxes</a>
-      <a :href="`#/article/policy-vs-efficiency/${lang}`" :class="{ active: route === 'article' && params.id==='policy-vs-efficiency' }">Policy vs Efficiency</a>
-      <a :href="`#/article/canadasabatage/${lang}`" :class="{ active: route === 'article' && params.id==='canadasabatage' }">Canada: Venture Regulation</a>
-    </nav>
     <div class="lang-switch">
       <button :class="{ active: lang === 'en' }" @click="setLang('en')">EN</button>
       <button :class="{ active: lang === 'pt' }" @click="setLang('pt')">PT</button>
@@ -198,11 +188,6 @@ const isHome = computed(() => route.value === 'home')
   cursor: pointer;
 }
 .logo { height: 24px; width: 24px; }
-.nav a {
-  margin-right: 1rem;
-  text-decoration: none;
-}
-.nav a.active { font-weight: 700; }
 .lang-switch button { margin-left: 0.5rem; }
 .lang-switch .active { font-weight: 700; }
 .content {
