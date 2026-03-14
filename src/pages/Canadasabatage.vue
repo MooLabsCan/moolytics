@@ -72,8 +72,9 @@ const formattedDate = computed(() => {
   <article class="article">
     <header style="display:flex;align-items:center;justify-content:space-between;gap:1rem; margin-bottom:0.75rem;">
       <div>
-        <h1 v-if="props.lang==='en'">Canada’s Venture “Protection”: How Regulation Sabotaged Its Own Middle Class</h1>
-        <h1 v-else>Canadá — Como a Regulação Sabotou sua Própria Classe Média</h1>
+        <h1 v-if="props.lang==='en'">Canada’s Financial Sumptuary Laws: How Regulation Sabotaged Its Own Middle Class</h1>
+        <h1 v-else-if="props.lang==='fr'">Les lois somptuaires financières du Canada : comment la réglementation a saboté sa propre classe moyenne</h1>
+        <h1 v-else>Leis suntuárias financeiras do Canadá: como a regulamentação sabotou sua própria classe média</h1>
         <div class="byline">
           <em v-if="props.lang==='en'">Matt Headley</em>
           <em v-else>Matt Headley</em>
