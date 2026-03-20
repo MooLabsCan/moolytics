@@ -8,6 +8,10 @@ import SocietyFailedPrisons from './pages/Society-Failed-Prisons.vue'
 import EmployerFines from './pages/employerFines.vue'
 import PolicyVsEfficiency from './pages/PolicyVsEfficiency.vue'
 import Canadasabatage from './pages/Canadasabatage.vue'
+import { useAdcash } from './composables/useAdcashHook.js'
+
+
+useAdcash('grmxfzwmqf')
 
 function normalizeLang(l) {
   const v = String(l || '').toLowerCase()
