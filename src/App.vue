@@ -8,10 +8,7 @@ import SocietyFailedPrisons from './pages/Society-Failed-Prisons.vue'
 import EmployerFines from './pages/employerFines.vue'
 import PolicyVsEfficiency from './pages/PolicyVsEfficiency.vue'
 import Canadasabatage from './pages/Canadasabatage.vue'
-import { useAdcash } from './composables/useAdcashHook.js'
-
-
-useAdcash('grmxfzwmqf')
+import AdBanner from './components/AdBanner.vue'
 
 function normalizeLang(l) {
   const v = String(l || '').toLowerCase()
@@ -158,6 +155,7 @@ const isHome = computed(() => route.value === 'home')
   </header>
 
   <main class="content">
+    <AdBanner />
     <Home v-if="isHome" :lang="lang" />
     <ArticleBrazilEstonia v-else-if="route === 'article' && params.id==='brazil-estonia'" :lang="lang" :id="params.id" />
     <MarketEfficiencyGermany v-else-if="route === 'article' && params.id==='market-efficiency-germany'" />
@@ -167,6 +165,7 @@ const isHome = computed(() => route.value === 'home')
     <PolicyVsEfficiency v-else-if="route === 'article' && params.id==='policy-vs-efficiency'" :lang="lang" :id="params.id" />
     <Canadasabatage v-else-if="route === 'article' && params.id==='canadasabatage'" :lang="lang" :id="params.id" />
     <div v-else>Not Found</div>
+    <AdBanner />
   </main>
 </template>
 
