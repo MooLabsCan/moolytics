@@ -9,6 +9,7 @@ import EmployerFines from './pages/employerFines.vue'
 import PolicyVsEfficiency from './pages/PolicyVsEfficiency.vue'
 import Canadasabatage from './pages/Canadasabatage.vue'
 import AdBanner from './components/AdBanner.vue'
+import AdSkyscraper from './components/AdSkyscraper.vue'
 
 function normalizeLang(l) {
   const v = String(l || '').toLowerCase()
@@ -153,6 +154,8 @@ const isHome = computed(() => route.value === 'home')
       <button v-if="route === 'article' && params.id==='canadasabatage'" :class="{ active: lang === 'fr' }" @click="setLang('fr')">FR</button>
     </div>
   </header>
+
+  <AdSkyscraper />
 
   <main class="content">
     <AdBanner />
