@@ -8,6 +8,9 @@ import SocietyFailedPrisons from './pages/Society-Failed-Prisons.vue'
 import EmployerFines from './pages/employerFines.vue'
 import PolicyVsEfficiency from './pages/PolicyVsEfficiency.vue'
 import Canadasabatage from './pages/Canadasabatage.vue'
+import MarxVsGeorge from './pages/MarxVsGeorge.vue'
+import MarxVsGeorge2 from './pages/MarxVsGeorge2.vue'
+import MarxVsGeorgeTitlePage from './pages/MarxVsGeorgeTitlePage.vue'
 import AdBanner from './components/AdBanner.vue'
 import AdSkyscraper from './components/AdSkyscraper.vue'
 
@@ -144,10 +147,10 @@ const isHome = computed(() => route.value === 'home')
 
 <template>
   <header class="topbar">
-    <div class="brand" @click="() => (window.location.hash = '#/')">
+    <a class="brand" href="#/">
       <img src="/moolytics-logo.svg" alt="Moolytics logo" class="logo" />
       <span class="brand-text">Moolytics</span>
-    </div>
+    </a>
     <div class="lang-switch">
       <button :class="{ active: lang === 'en' }" @click="setLang('en')">EN</button>
       <button :class="{ active: lang === 'pt' }" @click="setLang('pt')">PT</button>
@@ -157,7 +160,10 @@ const isHome = computed(() => route.value === 'home')
 
   <AdSkyscraper />
 
-  <main class="content">
+  <!-- Full-bleed pages render outside the constrained .content wrapper -->
+  <MarxVsGeorgeTitlePage v-if="route === 'article' && params.id==='marx-george-intro'" :lang="lang" :id="params.id" />
+
+  <main v-else class="content">
     <AdBanner />
     <Home v-if="isHome" :lang="lang" />
     <ArticleBrazilEstonia v-else-if="route === 'article' && params.id==='brazil-estonia'" :lang="lang" :id="params.id" />
@@ -167,6 +173,8 @@ const isHome = computed(() => route.value === 'home')
     <EmployerFines v-else-if="route === 'article' && params.id==='employer-fines'" :lang="lang" />
     <PolicyVsEfficiency v-else-if="route === 'article' && params.id==='policy-vs-efficiency'" :lang="lang" :id="params.id" />
     <Canadasabatage v-else-if="route === 'article' && params.id==='canadasabatage'" :lang="lang" :id="params.id" />
+    <MarxVsGeorge v-else-if="route === 'article' && params.id==='marx-vs-george'" :lang="lang" :id="params.id" />
+    <MarxVsGeorge2 v-else-if="route === 'article' && params.id==='marx-vs-george-2'" :lang="lang" :id="params.id" />
     <div v-else>Not Found</div>
     <AdBanner />
   </main>
@@ -192,6 +200,8 @@ const isHome = computed(() => route.value === 'home')
   font-weight: 800;
   font-size: 1.1rem;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 .logo { height: 24px; width: 24px; }
 .lang-switch button { margin-left: 0.5rem; }

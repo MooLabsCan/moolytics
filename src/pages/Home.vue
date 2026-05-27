@@ -1,148 +1,240 @@
 <script setup>
 import { computed } from 'vue'
+import articlesData from '../data/articles.js'
+
 const props = defineProps({ lang: { type: String, default: 'en' } })
 
-const t = computed(() => {
-  if (props.lang === 'pt') {
-    return {
-      title: 'Moolytics - Geo-Economia em Foco',
-      intro: 'Bem-vindo ao Moolytics. Análises de dados, políticas públicas e mercados - com ênfase em geoeconomia.',
-      sample: 'Artigos em destaque',
-      article1: 'Brasil vs Estônia - Tributação de Dividendos',
-      article2: 'A Eficiência de Mercado Global - Alemanha em foco',
-      article3: 'Henry George — Rejeitado no Ocidente, Abraçado no Oriente',
-      article4: 'O Custo Duplo do Sistema Punitivo',
-      article5: 'A Disputa Oculta: Impostos sobre Folha (Empregador vs Empregado)',
-      article6: 'Política vs Eficiência — O que a lei promove é o que o mercado colhe',
-      article7: 'Finlândia — KOK vs PS: Sauna pró‑mercado',
-      article8: 'Canadá — Reguladores vs Classe Média (TSXV & investidores de varejo)',
-      read: 'Ler artigo'
-    }
+const articles = computed(() =>
+  [...articlesData].sort((a, b) => b.date.localeCompare(a.date))
+)
+
+const featured = computed(() => articles.value[0] ?? null)
+const rest = computed(() => articles.value.slice(1))
+
+function t(article) {
+  return article[props.lang] ?? article.en
+}
+
+function formatDate(iso) {
+  const [y, m] = iso.split('-')
+  const months = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December']
+  return `${months[+m - 1]} ${y}`
+}
+
+const ui = computed(() => {
+  if (props.lang === 'pt') return {
+    siteTitle: 'Moolytics — Geo-Economia em Foco',
+    siteIntro: 'Análises de dados, políticas públicas e mercados — com ênfase em geoeconomia.',
+    featured: 'Mais recente',
+    section: 'Artigos em destaque',
+    read: 'Ler artigo'
   }
   return {
-    title: 'Moolytics - Geo-Economics in Focus',
-    intro: 'Welcome to Moolytics. Data-driven analysis on public policy and markets - with a geo-economics lens.',
-    sample: 'Featured Articles',
-    article1: 'Brazil vs Estonia - Dividend Taxation',
-    article2: 'The Global Pivot to Market Efficiency (Germany)',
-    article3: 'Henry George — Rejected in the West, Embraced in the East',
-    article4: 'The Dual Cost of the Punitive System',
-    article5: 'The Hidden Tug-of-War: Employer vs Employee Payroll Taxes',
-    article6: 'Policy vs Efficiency — Incentives, markets, and outcomes',
-    article7: "Finland — KOK vs PS: Free‑Market Sauna",
-    article8: 'Canada — Venture Regulation vs the Middle Class',
+    siteTitle: 'Moolytics — Geo-Economics in Focus',
+    siteIntro: 'Data-driven analysis on public policy and markets — with a geo-economics lens.',
+    featured: 'Latest',
+    section: 'Featured Articles',
     read: 'Read article'
   }
 })
 </script>
 
 <template>
-  <section>
-    <h1>{{ t.title }}</h1>
-    <p>{{ t.intro }}</p>
+  <section class="home">
 
-    <h2 style="margin-top: 2rem">{{ t.sample }}</h2>
-    <div class="cards">
-      <article class="card">
-        <header>
-          <h3>{{ t.article1 }}</h3>
-        </header>
-        <p>
-          <span v-if="props.lang==='en'">A comparison of Brazil’s profit-tax/exempt-dividend model with Estonia’s tax-on-distribution approach, and implications for growth and fairness.</span>
-          <span v-else>Uma comparação entre o modelo brasileiro (tributa lucro/isenta dividendos) e o modelo estoniano (tributa na distribuição), e seus impactos no crescimento e na equidade.</span>
-        </p>
-        <a :href="`#/article/brazil-estonia/${props.lang}`" class="btn">{{ t.read }}</a>
-      </article>
-      <article class="card">
-        <header>
-          <h3>{{ t.article2 }}</h3>
-        </header>
-        <p>
-          <span v-if="props.lang==='en'">Why market efficiency matters now: lessons from Estonia and Singapore, and what Germany must fix to regain dynamism.</span>
-          <span v-else>Por que a eficiência de mercado importa agora: lições de Estônia e Cingapura, e o que a Alemanha precisa ajustar para recuperar dinamismo.</span>
-        </p>
-        <a :href="`#/article/market-efficiency-germany/${props.lang}`" class="btn">{{ t.read }}</a>
-      </article>
-      <article class="card">
-        <header>
-          <h3>{{ t.article3 }}</h3>
-        </header>
-        <p>
-          <span v-if="props.lang==='en'">Henry George’s land value tax—ignored in the West, implemented in the East. How Hong Kong and Singapore turned land rents into growth, housing, and low taxes.</span>
-          <span v-else>O imposto sobre valor da terra de Henry George — ignorado no Ocidente, implementado no Oriente. Como Hong Kong e Singapura converteram rendas da terra em crescimento, moradia e impostos baixos.</span>
-        </p>
-        <a :href="`#/article/george-east-west/${props.lang}`" class="btn">{{ t.read }}</a>
-      </article>
-      <article class="card">
-        <header>
-          <h3>{{ t.article4 }}</h3>
-        </header>
-        <p>
-          <span v-if="props.lang==='en'">A citizen-first look at Brazil’s punitive system: why society pays twice when prisons fail, and what reforms could change that.</span>
-          <span v-else>Um olhar centrado no cidadão sobre o sistema punitivo: por que a sociedade paga duas vezes quando a cadeia falha e quais reformas podem mudar isso.</span>
-        </p>
-        <a :href="`#/article/society-failed-prisons/${props.lang}`" class="btn">{{ t.read }}</a>
-      </article>
-      <article class="card">
-        <header>
-          <h3>{{ t.article5 }}</h3>
-        </header>
-        <p>
-          <span v-if="props.lang==='en'">Employer vs employee payroll taxes: what incidence research says about wage growth, competitiveness, and policy design. Includes an interactive chart.</span>
-          <span v-else>Impostos sobre folha do empregador vs empregado: o que a pesquisa de incidência diz sobre crescimento salarial, competitividade e desenho de políticas. Inclui gráfico interativo.</span>
-        </p>
-        <a :href="`#/article/employer-fines/${props.lang}`" class="btn">{{ t.read }}</a>
-      </article>
-      <article class="card">
-        <header>
-          <h3>{{ t.article6 }}</h3>
-        </header>
-        <p>
-          <span v-if="props.lang==='en'">A data-first scoreboard comparing laws by their incentive effects on market efficiency, mobility, jobs, and wages — plus a new article draft.</span>
-          <span v-else>Um placar baseado em dados que compara leis pelos incentivos que criam sobre eficiência de mercado, mobilidade, empregos e salários — inclui novo rascunho de artigo.</span>
-        </p>
-        <a :href="`#/article/policy-vs-efficiency/${props.lang}`" class="btn">{{ t.read }}</a>
-      </article>
-      <article class="card">
-        <header>
-          <h3>{{ t.article7 }}</h3>
-        </header>
-        <p>
-          <span v-if="props.lang==='en'">Finland’s 2023 smart split: market‑minded voters back KOK’s pro‑efficiency reforms while populists chase short‑term noise. A light, data‑tinged read.</span>
-          <span v-else>A divisão inteligente na Finlândia (2023): eleitores pró‑mercado apoiam reformas do KOK enquanto o populismo persegue o curto prazo. Leitura leve com dados.</span>
-        </p>
-        <a :href="`#/article/finland-kok/${props.lang}`" class="btn">{{ t.read }}</a>
-      </article>
-      <article class="card">
-        <header>
-          <h3>{{ t.article8 }}</h3>
-        </header>
-        <p>
-          <span v-if="props.lang==='en'">Canada’s regulatory turn shut retail investors out of early‑stage markets and choked the TSXV. How “protection” hollowed the middle class.</span>
-          <span v-else>A guinada regulatória no Canadá excluiu o varejo dos mercados iniciais e asfixiou a TSXV. Como a “proteção” esvaziou a classe média.</span>
-        </p>
-        <a :href="`#/article/canadasabatage/${props.lang}`" class="btn">{{ t.read }}</a>
+    <!-- ── Site header ── -->
+    <div class="site-header">
+      <h1 class="site-title">{{ ui.siteTitle }}</h1>
+      <p class="site-intro">{{ ui.siteIntro }}</p>
+    </div>
+
+    <div class="section-row">
+      <h2 class="section-label">{{ ui.section }}</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <!-- ── Featured (newest) article ── -->
+    <article v-if="featured" class="card card-featured">
+      <div class="card-meta">
+        <span class="tag-latest">{{ ui.featured }}</span>
+        <span class="card-date">{{ formatDate(featured.date) }}</span>
+      </div>
+      <h3 class="card-title card-title-lg">{{ t(featured).title }}</h3>
+      <p class="card-desc">{{ t(featured).desc }}</p>
+      <a :href="featured.href" class="btn btn-primary">{{ ui.read }} &rarr;</a>
+    </article>
+
+    <!-- ── Article grid ── -->
+    <div class="cards-grid">
+      <article v-for="article in rest" :key="article.id" class="card">
+        <div class="card-meta">
+          <span class="card-date">{{ formatDate(article.date) }}</span>
+        </div>
+        <h3 class="card-title">{{ t(article).title }}</h3>
+        <p class="card-desc">{{ t(article).desc }}</p>
+        <a :href="article.href" class="btn">{{ ui.read }}</a>
       </article>
     </div>
+
   </section>
 </template>
 
 <style scoped>
-.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+.home {
+  padding-top: 0.5rem;
 }
+
+/* ── Site header ── */
+.site-header {
+  padding: 1.75rem 0 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.75rem;
+}
+.site-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+  color: var(--color-heading, inherit);
+}
+.site-intro {
+  font-size: 0.95rem;
+  color: var(--vt-c-text-light-2, #888);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+/* ── Section heading ── */
+.section-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.section-label {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.72rem;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vt-c-text-light-2, #999);
+  margin: 0;
+  white-space: nowrap;
+}
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ── Base card ── */
 .card {
   border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem 1.1rem;
+  background: var(--color-background, #fff);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: box-shadow 0.18s, transform 0.18s;
 }
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Featured card ── */
+.card-featured {
+  margin-bottom: 1.25rem;
+  padding: 1.75rem 2rem 1.5rem;
+  border-left: 4px solid #7a5c28;
+  background: var(--color-background-soft, #faf8f4);
+}
+
+/* ── Card meta (date + badge) ── */
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.card-date {
+  font-size: 0.7rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--vt-c-text-light-2, #aaa);
+}
+.tag-latest {
+  font-size: 0.62rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: #7a5c28;
+  background: rgba(122,92,40,0.1);
+  border: 1px solid rgba(122,92,40,0.25);
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+}
+
+/* ── Card title ── */
+.card-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  color: var(--color-heading, inherit);
+}
+.card-title-lg {
+  font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+}
+
+/* ── Card description ── */
+.card-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--vt-c-text-light-2, #666);
+  margin: 0;
+  flex: 1;
+}
+
+/* ── Buttons ── */
 .btn {
   display: inline-block;
-  padding: 0.5rem 0.75rem;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  padding: 0.4rem 0.85rem;
   border: 1px solid var(--color-border);
   border-radius: 6px;
   text-decoration: none;
+  font-size: 0.8rem;
+  color: inherit;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn:hover {
+  background: var(--color-background-soft, #f5f5f5);
+  border-color: #9b7d48;
+}
+.btn-primary {
+  border-color: #7a5c28;
+  color: #5a3c10;
+  background: rgba(122,92,40,0.06);
+}
+.btn-primary:hover {
+  background: rgba(122,92,40,0.14);
+}
+
+/* ── Grid ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 580px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .card-featured { padding: 1.25rem 1.2rem 1.1rem; }
 }
 </style>
