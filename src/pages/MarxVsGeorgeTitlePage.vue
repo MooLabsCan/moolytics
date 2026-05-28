@@ -566,18 +566,9 @@ const encodedText = encodeURIComponent(shareText)
 }
 .news-figure img {
   max-width: 100%; height: auto; display: block; margin: 0 auto;
-  /* Aged ink — sepia + slight contrast lift, slightly darkened */
-  filter: sepia(0.92) contrast(1.1) brightness(0.86);
+  opacity: 0.88;
+  filter: sepia(0.55) contrast(0.95) brightness(0.94);
   mix-blend-mode: multiply;
-  /* Soft vignette mask — feathers image into the paper */
-  -webkit-mask-image: radial-gradient(
-    ellipse 88% 82% at 50% 50%,
-    black 40%, rgba(0,0,0,0.82) 65%, rgba(0,0,0,0.3) 85%, transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 88% 82% at 50% 50%,
-    black 40%, rgba(0,0,0,0.82) 65%, rgba(0,0,0,0.3) 85%, transparent 100%
-  );
 }
 .news-figure-cap {
   font-size: 0.59rem; font-style: italic; color: #5c3d10;
