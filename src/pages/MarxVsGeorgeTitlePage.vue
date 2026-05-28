@@ -264,7 +264,9 @@ const encodedText = encodeURIComponent(shareText)
                   grows heated; it never grows dishonest. The two men find, at the evening&rsquo;s close, that they
                   agree on more than either predicted.</p>
                 <p class="vs-box-desc vs-box-note"><em>The debate as one might wish it had gone.</em></p>
-                <button class="vs-btn" :class="{ 'vs-btn-active': selectedVersion === 'v1' }" @click="selectVersion('v1')">Read This Account &rarr;</button>
+                <div class="vs-actions">
+                  <button class="vs-btn" :class="{ 'vs-btn-active': selectedVersion === 'v1' }" @click="selectVersion('v1')">Read &rarr;</button>
+                </div>
               </div>
 
               <div class="vs-divider"></div>
@@ -279,7 +281,9 @@ const encodedText = encodeURIComponent(shareText)
                   sharpest indictment of the night &mdash; not of Mr. Marx&rsquo;s economics, but of the style of
                   thought that produced them.</p>
                 <p class="vs-box-desc vs-box-note"><em>One produced gulags. The other was never tried.</em></p>
-                <button class="vs-btn" :class="{ 'vs-btn-active': selectedVersion === 'v2' }" @click="selectVersion('v2')">Read This Account &rarr;</button>
+                <div class="vs-actions">
+                  <button class="vs-btn" :class="{ 'vs-btn-active': selectedVersion === 'v2' }" @click="selectVersion('v2')">Read &rarr;</button>
+                </div>
               </div>
 
             </div>
@@ -664,6 +668,108 @@ const encodedText = encodeURIComponent(shareText)
 .vs-btn:hover, .vs-btn-active { background: rgba(74,48,16,0.2); }
 
 .article-embed :deep(.np-wrapper) { margin: 0; }
+
+/* ═══════════════════════════════════════════════════════════════
+   VERSION BOX ACTIONS
+   ═══════════════════════════════════════════════════════════════ */
+.vs-actions {
+  display: flex; gap: 0.45rem; align-items: center; margin-top: auto; flex-wrap: wrap;
+}
+.vs-listen-btn {
+  display: inline-block; padding: 0.38rem 0.75rem;
+  border: 1.5px solid rgba(74,48,16,0.45); color: #4a3010;
+  font-variant: small-caps; letter-spacing: 0.1em; font-size: 0.71rem; font-weight: 700;
+  font-family: 'Unna', Georgia, 'Times New Roman', Times, serif;
+  background: transparent; cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.vs-listen-btn:hover  { background: rgba(74,48,16,0.1); border-color: #4a3010; }
+.vs-listen-active     { background: rgba(74,48,16,0.18) !important; border-color: #4a3010 !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   TTS PLAYER BAR — fixed bottom
+   ═══════════════════════════════════════════════════════════════ */
+.tts-player {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 1100;
+  background: #0f0703;
+  border-top: 2px solid #9b7d48;
+  padding: 0.5rem 1.25rem 0.6rem;
+  font-family: 'Unna', Georgia, 'Times New Roman', Times, serif;
+  display: flex; flex-direction: column; gap: 0.28rem;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.55);
+}
+.tts-edition {
+  font-size: 0.58rem; font-variant: small-caps; letter-spacing: 0.13em;
+  color: rgba(155,125,72,0.65); text-align: center;
+}
+.tts-now {
+  display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap;
+  min-height: 1.3em;
+}
+.tts-spkr {
+  font-size: 0.68rem; font-variant: small-caps; font-weight: 700;
+  letter-spacing: 0.14em; flex-shrink: 0;
+}
+.tts-spkr.george { color: #c8a86a; }
+.tts-spkr.marx   { color: #a06040; }
+.tts-line-text {
+  font-size: 0.71rem; font-style: italic; color: rgba(200,168,106,0.75);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+}
+.tts-controls {
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.tts-btn {
+  font-family: 'Unna', Georgia, 'Times New Roman', Times, serif;
+  font-variant: small-caps; font-size: 0.65rem; letter-spacing: 0.1em;
+  background: transparent; border: 1px solid rgba(155,125,72,0.45);
+  color: #c8a86a; padding: 0.22rem 0.65rem; cursor: pointer;
+  transition: background 0.15s;
+}
+.tts-btn:hover { background: rgba(155,125,72,0.12); }
+.tts-stop-btn { border-color: rgba(160,96,64,0.5); color: #a06040; }
+.tts-stop-btn:hover { background: rgba(160,96,64,0.12); }
+.tts-progress {
+  font-size: 0.6rem; font-variant: small-caps; letter-spacing: 0.08em;
+  color: rgba(155,125,72,0.5); margin-left: auto;
+}
+
+/* loading state */
+.tts-loading {
+  font-size: 0.68rem; font-style: italic; letter-spacing: 0.08em;
+  color: rgba(200,168,106,0.6); animation: tts-pulse 1.4s ease-in-out infinite;
+}
+@keyframes tts-pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+/* disabled state */
+.tts-btn:disabled { opacity: 0.4; cursor: default; }
+
+/* error toast — sits just above player bar */
+.tts-error-toast {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 1099;
+  background: #3a1208;
+  border-top: 1px solid rgba(160,64,48,0.6);
+  color: #e07060; font-family: 'Unna', Georgia, 'Times New Roman', Times, serif;
+  font-size: 0.71rem; font-style: italic; letter-spacing: 0.04em;
+  padding: 0.5rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.tts-err-close {
+  background: transparent; border: none; color: rgba(160,96,80,0.7);
+  font-size: 0.75rem; cursor: pointer; padding: 0 0.2rem;
+}
+
+/* slide-up transition */
+.tts-slide-enter-active, .tts-slide-leave-active { transition: transform 0.3s ease, opacity 0.3s ease; }
+.tts-slide-enter-from, .tts-slide-leave-to { transform: translateY(100%); opacity: 0; }
+
+@media (min-width: 640px) {
+  .tts-player { flex-direction: row; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+  .tts-edition { text-align: left; white-space: nowrap; }
+  .tts-now { flex: 1; }
+  .tts-controls { flex-shrink: 0; }
+  .tts-progress { margin-left: 0; }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    FOOTER
