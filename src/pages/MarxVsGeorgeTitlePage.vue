@@ -563,12 +563,25 @@ const encodedText = encodeURIComponent(shareText)
   border-top: 3px double #4a3010;
   border-bottom: 3px double #4a3010;
   text-align: center;
+  position: relative;
+}
+.news-figure::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px;
+  mix-blend-mode: overlay;
+  opacity: 0.12;
 }
 .news-figure img {
   max-width: 100%; height: auto; display: block; margin: 0 auto;
   opacity: 0.88;
   filter: sepia(0.55) contrast(0.95) brightness(0.94);
   mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(ellipse 90% 86% at 50% 50%, black 45%, rgba(0,0,0,0.75) 66%, rgba(0,0,0,0.15) 86%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 86% at 50% 50%, black 45%, rgba(0,0,0,0.75) 66%, rgba(0,0,0,0.15) 86%, transparent 100%);
 }
 .news-figure-cap {
   font-size: 0.59rem; font-style: italic; color: #5c3d10;

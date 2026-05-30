@@ -1,0 +1,21 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+RewriteEngine On
+
+# Route clean article URLs to their PHP static pages
+RewriteRule ^article/marx-george-intro/?$ /marx-george-intro.php [L,NC]
+RewriteRule ^article/marx-vs-george/?$ /marx-vs-george.php [L,NC]
+RewriteRule ^article/marx-vs-george-2/?$ /marx-vs-george-2.php [L,NC]
+RewriteRule ^article/george-east-west/?$ /george-east-west.php [L,NC]
+RewriteRule ^article/brazil-estonia/?$ /brazil-estonia.php [L,NC]
+RewriteRule ^article/market-efficiency-germany/?$ /market-efficiency-germany.php [L,NC]
+RewriteRule ^article/society-failed-prisons/?$ /society-failed-prisons.php [L,NC]
+RewriteRule ^article/employer-fines/?$ /employer-fines.php [L,NC]
+RewriteRule ^article/policy-vs-efficiency/?$ /policy-vs-efficiency.php [L,NC]
+RewriteRule ^article/canadasabatage/?$ /canadasabatage.php [L,NC]
+RewriteRule ^article/finland-kok/?$ /finland-kok.php [L,NC]
+
+# SPA fallback: serve index.html for any path that is not a real file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.html [L]
