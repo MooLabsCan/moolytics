@@ -1,8 +1,9 @@
 Options -Indexes
-DirectoryIndex index.php index.html
+DirectoryIndex index.html
 RewriteEngine On
 
 # Route clean article URLs to their PHP static pages
+RewriteRule ^article/marx-george-intro/pt/?$ /marx-george-intro-pt.php [L,NC]
 RewriteRule ^article/marx-george-intro/?$ /marx-george-intro.php [L,NC]
 RewriteRule ^article/marx-vs-george/?$ /marx-vs-george.php [L,NC]
 RewriteRule ^article/marx-vs-george-2/?$ /marx-vs-george-2.php [L,NC]

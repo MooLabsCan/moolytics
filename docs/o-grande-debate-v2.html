@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Grande Debate — Marx vs. George</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1712;
+    --ink-soft:#3a322a;
+    --paper:#e9e0cb;
+    --paper-2:#ded2b7;
+    --rule:#2a2118;
+    --accent:#5a1f12;
+    --faded:#6b6049;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(120,95,40,.10), transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(90,30,18,.08), transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'EB Garamond', 'Old Standard TT', Georgia, serif;
+    font-size:18px;
+    line-height:1.55;
+    padding:32px 14px 80px;
+  }
+  /* paper grain + foxing */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      radial-gradient(circle at 12% 22%, rgba(90,60,20,.06) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 64%, rgba(90,60,20,.05) 0 2px, transparent 3px),
+      radial-gradient(circle at 45% 88%, rgba(110,40,20,.05) 0 1px, transparent 2px),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+  .sheet{
+    position:relative;z-index:1;
+    max-width:1000px;margin:0 auto;
+    background:linear-gradient(180deg,var(--paper) 0%, var(--paper-2) 100%);
+    border:1px solid #4a3c28;
+    box-shadow:0 2px 0 #c9bd9f, 0 18px 50px rgba(40,30,10,.35), inset 0 0 120px rgba(120,90,40,.12);
+    padding:46px 54px 64px;
+  }
+  /* ---- Masthead ---- */
+  .masthead{text-align:center;border-bottom:3px double var(--rule);padding-bottom:14px;}
+  .pre-rule{display:flex;justify-content:space-between;align-items:center;
+    font-family:'Old Standard TT',serif;text-transform:uppercase;letter-spacing:2px;
+    font-size:11px;color:var(--ink-soft);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:14px;}
+  .nameplate{
+    font-family:'UnifrakturCook', 'Playfair Display', serif;
+    font-weight:700;font-size:clamp(46px,9vw,92px);line-height:.92;margin:6px 0 4px;
+    letter-spacing:1px;color:var(--ink);
+    text-shadow:0 1px 0 rgba(255,255,255,.25);
+  }
+  .nameplate .sm{font-size:.4em;}
+  .sub-rule{display:flex;justify-content:center;gap:18px;align-items:center;
+    font-family:'Old Standard TT',serif;text-transform:uppercase;letter-spacing:3px;
+    font-size:11px;color:var(--ink-soft);margin-top:8px;flex-wrap:wrap;}
+  .sub-rule span{white-space:nowrap;}
+  .dot{width:4px;height:4px;background:var(--accent);border-radius:50%;display:inline-block;}
+
+  .disclosure{
+    margin:18px auto 0;max-width:640px;border:1px solid var(--accent);
+    padding:8px 16px;text-align:center;font-style:italic;font-size:13.5px;color:var(--accent);
+    background:rgba(90,31,18,.05);
+  }
+
+  /* ---- Headline block ---- */
+  .head-block{text-align:center;margin:34px 0 10px;}
+  .kicker{font-family:'Old Standard TT',serif;text-transform:uppercase;letter-spacing:4px;
+    font-size:12px;color:var(--accent);margin-bottom:10px;}
+  h1.headline{
+    font-family:'Playfair Display',serif;font-weight:900;font-style:italic;
+    font-size:clamp(34px,6vw,62px);line-height:1.02;margin:0 0 10px;letter-spacing:-.5px;
+  }
+  .deck{font-family:'Playfair Display',serif;font-weight:400;font-style:italic;
+    font-size:clamp(17px,2.4vw,22px);color:var(--ink-soft);max-width:680px;margin:0 auto;}
+  .byline{font-family:'Old Standard TT',serif;text-transform:uppercase;letter-spacing:2px;
+    font-size:11.5px;color:var(--faded);margin-top:16px;
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:7px 0;display:inline-block;}
+
+  .scene{font-style:italic;text-align:center;color:var(--ink-soft);max-width:720px;margin:26px auto 6px;
+    font-size:16.5px;line-height:1.5;}
+
+  hr.thin{border:0;border-top:1px solid var(--rule);margin:30px 0;}
+  hr.fat{border:0;border-top:3px double var(--rule);margin:34px 0;}
+
+  /* ---- Body: columns ---- */
+  .body{column-count:2;column-gap:38px;column-rule:1px solid rgba(42,33,24,.3);margin-top:10px;}
+  @media (max-width:720px){.body{column-count:1;}}
+  .body p{margin:0 0 12px;text-align:justify;hyphens:auto;}
+
+  .round{break-inside:avoid;column-span:all;margin:30px 0 14px;text-align:center;}
+  .round .num{font-family:'Old Standard TT',serif;text-transform:uppercase;letter-spacing:5px;
+    font-size:11px;color:var(--accent);}
+  .round h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(22px,3.4vw,30px);
+    margin:6px 0 4px;}
+  .round .orn{color:var(--accent);font-size:14px;letter-spacing:6px;}
+
+  .section-label{column-span:all;text-align:center;font-family:'Playfair Display',serif;
+    font-weight:900;font-style:italic;font-size:clamp(24px,4vw,38px);letter-spacing:1px;
+    margin:36px 0 20px;position:relative;}
+  .section-label::before,.section-label::after{content:"❧";color:var(--accent);font-size:.6em;
+    vertical-align:middle;margin:0 14px;font-style:normal;}
+
+  .speaker{font-variant:small-caps;font-weight:700;letter-spacing:.5px;color:var(--accent);}
+  .speaker.m{color:#3a2a55;}
+  .stage{font-style:italic;color:var(--faded);}
+
+  .dropcap p:first-of-type::first-letter{
+    font-family:'Playfair Display',serif;font-weight:900;float:left;
+    font-size:74px;line-height:.66;padding:8px 10px 0 0;color:var(--accent);
+  }
+
+  .closing-flag{column-span:all;text-align:center;margin:38px 0 6px;}
+  .closing-flag span{font-family:'Old Standard TT',serif;text-transform:uppercase;letter-spacing:6px;
+    font-size:13px;color:var(--accent);border-top:1px solid var(--accent);border-bottom:1px solid var(--accent);padding:6px 24px;}
+
+  /* ---- Epilogue ---- */
+  .epilogue{max-width:560px;margin:30px auto 0;text-align:center;font-style:italic;
+    font-size:17px;line-height:1.7;color:var(--ink-soft);}
+  .epilogue p{margin:0 0 16px;}
+  .verdict{font-family:'Playfair Display',serif;font-style:normal;font-weight:700;
+    font-size:clamp(20px,3vw,26px);color:var(--ink);letter-spacing:.5px;margin:26px 0;line-height:1.5;}
+  .verdict em{color:var(--accent);}
+
+  .colophon{text-align:center;margin-top:46px;border-top:3px double var(--rule);padding-top:16px;
+    font-family:'Old Standard TT',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--faded);}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="pre-rule">
+      <span>N.º MCMXXIV</span>
+      <span>Preço — Dois Vinténs</span>
+      <span>Edição Vespertina</span>
+    </div>
+    <div class="nameplate">O Arauto <span class="sm">d</span>'Economia</div>
+    <div class="sub-rule">
+      <span>Londres &amp; Nova York</span><span class="dot"></span>
+      <span>Anno de 1887</span><span class="dot"></span>
+      <span>«A Verdade Sem Tributo»</span>
+    </div>
+    <div class="disclosure">
+      Aviso ao leitor — O diálogo que se segue é uma <strong>simulação</strong> imaginada.
+      O encontro aqui descrito jamais se deu na vida real.
+    </div>
+  </header>
+
+  <div class="head-block">
+    <div class="kicker">O Grande Debate</div>
+    <h1 class="headline">Terra, Trabalho e a Raiz<br>da Miséria Humana</h1>
+    <p class="deck">Karl Marx e Henry George em duelo de tribunas — barba e fogo de um lado, precisão e calma do outro.</p>
+    <div class="byline">Versão Segunda &nbsp;·&nbsp; O Registro Histórico</div>
+  </div>
+
+  <p class="scene">
+    Londres, 1887. Um salão de conferências repleto. Lampiões a gás. O cheiro de lã e de tabaco.
+    Dois homens em tribunas opostas — um barbudo e vulcânico, outro magro e exato. Um moderador que
+    se mostrará amplamente desnecessário — ainda que não pelas razões que ele imaginava.
+  </p>
+
+  <hr class="fat">
+
+  <div class="section-label">Discursos de Abertura</div>
+
+  <div class="body dropcap">
+    <p><span class="speaker m">Marx:</span> A condição da classe trabalhadora sob o capitalismo não é um acidente, nem uma ineficiência corrigível. É o sistema funcionando exatamente como foi concebido. O capitalista compra a força de trabalho pelo seu valor de mercado — a subsistência — e dela extrai muito mais valor do que devolve. Esse mais-valor é o motor da acumulação, a fonte do lucro e o mecanismo da exploração. À medida que o capital se concentra em poucas mãos, à medida que os pequenos produtores são absorvidos pela grande máquina industrial, as contradições se aprofundam. Crise sucede a crise. A pobreza cresce ao lado da riqueza não apesar do progresso, mas por causa dele. O sistema não pode ser reformado. Ele há de ser transcendido.</p>
+
+    <p><span class="speaker">George:</span> Vejo-me em concordância parcial com as observações do meu colega acerca da pobreza que cresce ao lado da riqueza — de fato, esse paradoxo é a questão central do nosso tempo, e dediquei a melhor parte da minha vida a tentar respondê-lo honestamente. Mas o seu diagnóstico, receio, confunde a sombra com a substância.</p>
+
+    <p>Observem qualquer grande cidade. À medida que ela cresce — à medida que o comércio se expande, que a população aumenta, que a indústria avança — quem captura a parte do leão dessa riqueza crescente? Não o operário que ergue os edifícios. Não o empreendedor que arrisca o seu capital. Não o inventor que ilumina as ruas. O proprietário de terras. O homem que detém o título do chão que sustenta tudo — chão que ele não fez, chão cujo valor a comunidade inteira criou pelo simples fato de ali estar — esse homem enriquece dormindo, enquanto o trabalhador empobrece a despeito de sua labuta.</p>
+
+    <p>Tributem o valor dessa terra — e somente ele — e removerão o grande sifão que drena do progresso a sua promessa. Libertem todo o resto, e vejam o que homens e mulheres livres são capazes de produzir.</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Primeiro Assalto</div>
+    <h2>A Experiência do Imigrante e a Promessa da América</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker">George:</span> Olhem para os milhões que afluem à América de cada canto da Europa — irlandeses fugindo da fome, alemães fugindo da burocracia prussiana, italianos fugindo de séculos de feudalismo aristocrático. O que buscam? Não a sua revolução, Sr. Marx. Buscam terra. Buscam o direito de trabalhar, construir e guardar o que ganham sem pagar tributo a um senhor. E quando chegam e desbravam uma fazenda com as próprias mãos, erguem um pequeno comércio em seu bairro, ensinam os filhos a ler à luz do lampião — isso não é luta de classes. É a ordem espontânea de homens e mulheres livres exprimindo a sua natureza mais elevada.</p>
+
+    <p>A América foi a grande experiência — a prova de que os seres humanos, libertados dos arranjos feudais, criariam prosperidade pela cooperação voluntária e pela iniciativa individual. A tragédia é que importamos do Velho Mundo precisamente aquilo de que essa gente fugia — a noção feudal de que a terra pode ser detida como monopólio privado para extrair tributo de todos quantos dela necessitem. Tomamos a energia do povo mais livre da terra e silenciosamente instalamos a mesma bomba que os sangrava nos países de onde escaparam.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(sereno, levemente sarcástico)</span> Um retrato comovente, Sr. George. Mas o seu imigrante, que chega cheio de esperança, logo descobre a fábrica, o cortiço e o armazém da companhia. Troca o senhor de terras do Velho Mundo pelo industrial do Novo. A geografia muda. A exploração, não. A sua liberdade americana é liberdade para o capital — não para o trabalho.</p>
+
+    <p><span class="speaker">George:</span> E por que existem os cortiços, Sr. Marx? Porque a terra sob Manhattan é mantida fora do mercado por especuladores que aguardam o trabalho alheio elevar-lhe o valor. Liberte essa terra pela tributação do seu valor, e os próprios mecanismos de mercado que o senhor despreza produziriam moradia acessível, salários mais altos e oportunidade genuína. O imigrante não precisa da sua revolução. Precisa que paremos de furtar-lhe o valor que ele cria no instante mesmo em que o cria.</p>
+
+    <p><span class="speaker m">Marx:</span> O problema é mais profundo do que a posse da terra —</p>
+
+    <p><span class="speaker">George:</span> Com o senhor é sempre mais profundo. Todo remédio prático é insuficiente. Toda reforma concreta erra a verdadeira profundidade do problema. Enquanto isso, a família imigrante dorme em seis num só quarto.</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Segundo Assalto</div>
+    <h2>O Mais-Valor e a Questão da Terra</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker m">Marx:</span> Sejamos precisos. A minha teoria do mais-valor demonstra que a exploração está embutida na própria relação salarial — não meramente na propriedade da terra. O trabalhador produz, digamos, dez horas de valor. O capitalista paga-lhe por cinco. As cinco restantes — o mais-valor — são apropriadas pelo dono do capital. Isso ocorre independentemente dos arranjos fundiários. O seu imposto único deixa esse mecanismo inteiramente intocado.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(assentindo lentamente)</span> É aqui que o senhor formula o seu argumento mais sério, e quero respondê-lo honestamente em vez de descartá-lo. O senhor tem razão em que a relação salarial contém assimetrias reais de poder. Não pretendo o contrário. Onde diferimos é na causa e no remédio.</p>
+
+    <p>O poder do capitalista sobre o trabalho depende inteiramente de que o trabalhador não tenha alternativa. Um homem que precisa trabalhar ou morrer de fome aceitará quase quaisquer condições. Mas por que ele precisa trabalhar ou morrer de fome? Porque o acesso à terra — ao recurso natural do qual toda riqueza em última instância deriva — foi monopolizado. Se a terra fosse livremente acessível, ou se o seu valor locativo fosse devolvido à comunidade, os trabalhadores teriam alternativas genuínas. A posição de barganha do trabalho transformar-se-ia da noite para o dia. O capitalista que tentasse pagar salários de subsistência descobriria que os seus operários têm opções que ele não pode controlar.</p>
+
+    <p>O seu mais-valor é real. Mas ele flui do monopólio da terra mais do que do capital em si. Corrija a fundação, e a estrutura acima dela se corrige naturalmente.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(uma leve aspereza entrando-lhe na voz)</span> O senhor pede muito à tal “correção natural”.</p>
+
+    <p><span class="speaker">George:</span> Peço muito menos do que o senhor pede à natureza humana quando lhe entrega o poder absoluto.</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Terceiro Assalto</div>
+    <h2>A Superprodução e a Válvula de Escoamento</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker m">Marx:</span> As crises recorrentes do capitalismo — os pânicos, as depressões, as fábricas paradas enquanto os operários passam fome — não são acidentes nem falhas de política. São contradições inerentes. A acumulação de capital leva à queda da taxa de lucro. A superprodução torna-se crônica. A classe trabalhadora, sistematicamente empobrecida, não pode comprar o que a indústria produz. São contradições objetivas que imposto algum resolve. O capitalismo consome-se a si mesmo por dentro.</p>
+
+    <p><span class="speaker">George:</span> Superprodução. <span class="stage">(um riso agudo e genuíno)</span> Sr. Marx, que maior absurdo a economia política já produziu? Dizem-nos que os homens andam esfarrapados porque há roupas em excesso. Que tiritam de frio porque há carvão demais. Que passam fome porque os celeiros transbordam. Como — como — pode haver superprodução enquanto milhões ainda carecem das mais básicas necessidades da vida civilizada?</p>
+
+    <p>Isto não é superprodução. É escassez fabricada em meio à abundância. O problema não é que produzamos demais — é que os ganhos da produção são continuamente sugados para o alto por rendas fundiárias crescentes. À medida que a indústria avança e as cidades crescem, o proprietário de terras captura uma fatia cada vez maior da riqueza criada por todos os demais. Isso comprime os salários, espreme o lucro honesto, sufoca o poder de compra — e então o senhor observa o colapso resultante e o chama de contradição inerente ao próprio capital.</p>
+
+    <p>As suas observações, Sr. Marx, são de fato agudas. A patologia que descreve é real. Mas o senhor parou uma camada cedo demais. O que chama de contradições terminais do capitalismo eu chamaria de consequências previsíveis de um mercado sem válvula de escoamento. Os valores da terra se acumulam sem limite — absorvendo os ganhos de produtividade, concentrando-se em poucas mãos, esfomeando de poder de compra a economia produtiva. Instale a válvula — tribute o valor da terra, devolva-o à comunidade — e o motor roda limpo. As crises que descreve não desaparecem porque o capitalismo foi transcendido. Desaparecem porque o defeito de projeto foi corrigido.</p>
+
+    <p>As suas observações estão corretas. O seu diagnóstico está errado. E a sua prescrição mataria o paciente.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(enrijecendo)</span> O senhor reduz uma análise sistêmica de proporções históricas a uma metáfora de encanador —</p>
+
+    <p><span class="speaker">George:</span> Reduzo-a a algo que um homem trabalhador consegue compreender e votar. O senhor a reduz a algo que só um filósofo alemão pode apreciar plenamente — convenientemente.</p>
+
+    <p class="stage">(Riso brando da plateia. A mandíbula de Marx se contrai. Algo se desloca por trás de seus olhos — não mera irritação, mas a frieza particular de um homem começando a reavaliar não o argumento, mas o arguente.)</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Quarto Assalto</div>
+    <h2>O Cirurgião e o Carrasco</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com intensidade contida)</span> O sistema capitalista não é um paciente com uma única enfermidade corrigível. Está doente até as fundações. As contradições são estruturais e fatais. Devemos substituir os órgãos falidos por estruturas racionais, de propriedade coletiva. Meias-medidas não curam doença terminal.</p>
+
+    <p><span class="speaker">George:</span> E é aqui que a sua metáfora se torna verdadeiramente perigosa. O senhor olha para um paciente vivo — imperfeito, sofredor, mas respirando, produzindo, capaz de coisas extraordinárias — e declara que o organismo inteiro deve ser desmontado e reconstruído a partir de princípios racionais. O senhor propõe remover os órgãos vitais e substituí-los por aço frio, projetado por homens que jamais ergueram um negócio, plantaram uma safra ou empregaram um vizinho.</p>
+
+    <p>Eu digo que o corpo está em grande parte saudável. O mercado, a troca livre, a iniciativa individual, o sistema de preços — esses são órgãos funcionais que tiraram mais gente da pobreza do que qualquer arranjo coletivo na história. O paciente sofre de um grande parasita: o monopólio da terra, que drena a energia de todo o resto. Removam-no cirurgicamente — por legislação democrática, por um imposto transparente sobre o que a comunidade cria — e o sistema vivo se recuperará e prosperará pela ação voluntária de indivíduos livres.</p>
+
+    <p>A sua revolução não é cirurgia. É execução — realizada com grande confiança teórica e completa indiferença a se o paciente sobrevive. E o histórico dos homens que tomam o poder absoluto em nome do povo não é dos que devam inspirar confiança a qualquer observador honesto.</p>
+
+    <p><span class="speaker m">Marx:</span> A transição requer —</p>
+
+    <p><span class="speaker">George:</span> A transição sempre requer algo terrível, não é? E é sempre algum outro quem paga o preço da transição. Os intelectuais que projetam a revolução raramente parecem ser os primeiros contra o paredão.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(asperamente)</span> O senhor é um sentimentalista incapaz de enxergar além de seu próprio otimismo americano provinciano —</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(com calma, deixando o salão sentir o ímpeto)</span></p>
+
+    <p>Vejo que o meu colega vai-se exaltando. Pediria que ele observe — para benefício da plateia — que este é o homem que se propõe a concentrar todo o poder econômico e político num Estado revolucionário. Se a teoria não pode sobreviver ao escrutínio de um salão londrino sem que esta temperatura se eleve, fica-se a imaginar como lidaria com as pressões bem mais exigentes de efetivamente governar.</p>
+
+    <p class="stage">(Uma pausa. Murmúrios no salão.)</p>
+
+    <p>Não pretendo desrespeito pessoal. Mas a questão do temperamento não está inteiramente separada da questão do governo.</p>
+
+    <p class="stage">(Marx nada diz. Mas a reavaliação por trás de seus olhos está agora completa. George deixou de ser um oponente a quem responder. É um problema a ser categorizado.)</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Quinto Assalto</div>
+    <h2>Liberdade, Propriedade e a Posse Verdadeira</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker">George:</span> Permitam-me dizer algo sobre a propriedade que suspeito surpreenderá os que me supõem um socialista disfarçado. Creio na propriedade privada mais fundamentalmente do que a maioria de seus supostos defensores. O homem que constrói uma casa deve possuí-la em absoluto. O homem que desbrava uma fazenda deve possuir-lhe a colheita por inteiro. O homem que ergue um negócio deve guardar-lhe os lucros integralmente. Não são concessões que faço a contragosto — são o fundamento moral de todo o meu sistema. O senhor o ganha, o senhor o guarda. Ponto final.</p>
+
+    <p>O que combato não é a propriedade, mas o privilégio — a apropriação de um valor que o indivíduo não criou. O especulador que compra um lote urbano e aguarda que a comunidade ao redor o torne valioso não criou esse valor. Ele o capturou. Isso não é propriedade. É uma cancela de pedágio erguida numa estrada construída por outrem.</p>
+
+    <p>O seu sistema, Sr. Marx, oferece aos trabalhadores algo a que o senhor chama de propriedade coletiva — mas um trabalhador que não pode vender a sua quota, transferi-la, dirigi-la ou usá-la segundo o próprio juízo não é um proprietário. É um servo com slogans melhores. O Estado torna-se o senhor de terras supremo — e, ao contrário do senhor de terras privado, dispõe de um exército.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com um aceno desdenhoso)</span> A distinção entre terra e capital que o senhor acha tão iluminadora é uma conveniência teórica que se dissolve sob exame sério. O senhor construiu um sistema que soa radical — tributar o latifundiário — deixando porém o dono da fábrica, o financista, todo o aparato de acumulação de capital inteiramente intocados. Os operários de Manchester não sofrem primariamente por causa da renda da terra. Sofrem porque não possuem os teares.</p>
+
+    <p>E essa conversa de direitos de propriedade — <span class="stage">(um som curto e desdenhoso)</span> — o senhor veste categorias feudais em linguagem liberal e a apresenta como libertação. O latifundiário dorme tranquilo sabendo que a revolução do Sr. George se detém aos portões de sua fábrica.</p>
+
+    <p><span class="speaker">George:</span> O poder do dono da fábrica depende do monopólio da terra sob ele. Desmantele isso e —</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(cortando-o)</span> É precisamente esse o tipo de raciocínio que serve tão eficazmente à classe possuidora. Identifica um mecanismo de exploração, denuncia-o ruidosamente, e, ao fazê-lo, desvia a atenção da estrutura mais profunda. Intencionalmente ou não — e deixo à plateia julgar qual —, o seu sistema funciona como uma defesa do capitalismo com objeções teatrais a seus abusos mais visíveis.</p>
+
+    <p class="stage">(Uma pausa. O deslocamento é agora audível — do debate à acusação.)</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(calmamente)</span></p>
+
+    <p>O senhor acaba de me acusar de estupidez ou de cumplicidade, sem prova de nenhuma das duas. Eis um lance notável, Sr. Marx. Já o vi antes — quando o argumento se torna difícil, o arguente torna-se suspeito. Convido-o de volta à substância, se estiver disposto.</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Sexto Assalto</div>
+    <h2>Proporcionalidade e Justiça</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker">George:</span> Quero tratar de algo que amiúde se perde nestas discussões — a questão da proporcionalidade. O meu sistema não é um instrumento cego. Quem detém um pequeno lote paga pouco. Quem especula com vastas extensões de terra urbana paga substancialmente. O lavrador que trabalha seus campos paga sobre o valor não-melhorado da terra — modesto na maioria dos casos — e não sobre o valor de seu trabalho ou de suas benfeitorias. O dono da fábrica não paga imposto algum sobre seu maquinário, seu estoque ou seus lucros. Somente o valor do chão sob ele — valor criado pela comunidade — é recuperado pela comunidade.</p>
+
+    <p>Isto não é punição do êxito. É precisamente o oposto. É a remoção de um sistema que atualmente pune o êxito — tributando os salários do trabalhador, os lucros do empreendedor, os rendimentos do investidor — enquanto recompensa o detentor passivo de terra que se valoriza com um ganho inteiramente imerecido.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(sem engajar de modo algum o argumento da proporcionalidade — redirecionando)</span> O que o senhor descreve como precisão eu descreveria como limitação deliberada. O senhor projetou um sistema que certa classe de reformador liberal acha palatável precisamente porque não ameaça as relações fundamentais de produção. O capital permanece privado. O lucro permanece privado. A relação salarial permanece intacta. O senhor tributa o latifundiário e a isso chama revolução, enquanto o dono da fábrica lê o seu livro e dorme tranquilo.</p>
+
+    <p>Noto também que o senhor fala em implementação democrática como se as instituições por que sua reforma deve passar fossem árbitros neutros. Não são. Estão capturadas — total e deliberadamente — pelos próprios interesses que o seu imposto ameaçaria. Os proprietários de terras não legislarão a própria extinção. Isto não é um obstáculo político a ser vencido. É uma característica estrutural da sociedade de classes.</p>
+
+    <p><span class="speaker">George:</span> Esse último ponto é genuinamente verdadeiro, e eu mesmo já o disse. As instituições democráticas são imperfeitas e sujeitas à captura. Onde diferimos é no remédio. O senhor propõe resolver a corrupção das instituições existentes erguendo outras muito mais poderosas e confiando que sejam incorruptas. Eu proponho um mecanismo simples o bastante para que a corrupção tenha bem pouco onde se agarrar.</p>
+
+    <p>Mas noto que o senhor não enfrentou o argumento da proporcionalidade.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com indiferença chã)</span> Porque é um detalhe. Não debato a calibragem de um remédio que considero fundamentalmente mal direcionado.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(à plateia, quase com brandura)</span></p>
+
+    <p>Ele acha os detalhes abaixo de si. Vale lembrar disto quando ele descrever a sociedade que suas ideias edificariam — uma sociedade que consistirá, na prática, inteiramente de detalhes administrados por homens que partilham sua certeza de que a visão geral os dispensa das especificidades.</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Sétimo Assalto</div>
+    <h2>O Gênio, a Invenção e a Energia das Mentes Livres</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker">George:</span> Permitam-me trazer a esta discussão um nome que ambos conhecemos — Nikola Tesla. Eis um homem nascido na Sérvia, filho de um clérigo, sem herança, sem título, sem conexão aristocrática. Veio à América quase sem nada. E pela pura força de seu intelecto — visualizando máquinas completas na mente antes de pôr a mão no metal — ele literalmente ilumina o mundo. A corrente alternada. O sistema elétrico que acendeu a Exposição Colombiana como um segundo sol.</p>
+
+    <p>É isto o que a energia humana liberada produz quando não está sendo drenada pela renda da terra, estrangulada pela burocracia ou dirigida por planejadores centrais que sabem mais. Tesla não precisou de comissário algum para lhe dizer o que inventar. Precisou de liberdade, de um ambiente que recompensasse o gênio, e de capital não desperdiçado em especulação que pudesse financiar sua obra. Tribute a terra, liberte o capital, e financiará mil Teslas.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com desprezo aberto)</span> O gênio individual é um mito burguês construído para justificar a desigualdade. O progresso tecnológico sob o capitalismo não liberta — intensifica a exploração, substitui o trabalho qualificado por maquinário e concentra o lucro entre os que possuem as máquinas. As invenções de Tesla enriquecerão Morgan e Westinghouse. O operário que instala a fiação permanecerá assalariado. O senhor cita o caso excepcional e finge que ele descreve a condição geral.</p>
+
+    <p><span class="speaker">George:</span> O caso excepcional existe precisamente porque as condições para ele existiam. O meu argumento é que essas condições deveriam estar ao alcance de todos — e não apenas dos poucos afortunados que escapam à gravidade do monopólio da terra. O senhor descarta Tesla como mito burguês. Eu vejo nele a prova do que se torna possível quando uma mente livre recebe um ambiente livre. A tragédia não é Tesla. A tragédia são os mil outros cujo potencial equivalente se dissolve, todo mês, num pagamento de aluguel.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com desprezo crescente, sem quase gritar, mas com uma feiura entrando-lhe no tom)</span> O senhor é profundamente ingênuo ou deliberadamente obscurece a realidade de como o capital opera. Tesla existe porque Morgan o achou útil. Quando deixou de ser útil, Morgan o destruiu. Eis o seu ambiente livre — a obra de uma vida sujeita aos caprichos de um financista. E o senhor ergue isto como modelo de florescimento humano?</p>
+
+    <p>Toda a sua filosofia é a filosofia de um homem que jamais teve de escolher entre o aluguel e o jantar. O senhor teoriza a liberdade de uma distância confortável enquanto a classe trabalhadora vive a realidade que suas teorias ignoram.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(com precisão tranquila, uma quietude que domina o salão)</span></p>
+
+    <p>Sr. Marx. Eu fui tipógrafo aos catorze anos. Quase morri de fome em São Francisco. Escrevi <em>Progresso e Pobreza</em> à luz do lampião, depois que meus filhos iam dormir, porque não podia pagar uma escrivaninha decente durante o dia. Não teorizei a pobreza de uma distância confortável. Eu a vivi, e dediquei minha vida a tentar compreendê-la com honestidade bastante para remediá-la.</p>
+
+    <p>O senhor questionou agora os meus motivos, minha posição de classe, minha inteligência e minha honestidade. O senhor não enfrentou, nos últimos três assaltos, um único argumento específico que apresentei.</p>
+
+    <p>Creio que a plateia notou.</p>
+
+    <p class="stage">(Silêncio. A expressão de Marx não é de quem se envergonha. É a expressão de um homem que reclassificou o oponente e considera a reclassificação final.)</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Oitavo Assalto</div>
+    <h2>Contradições Terminais e a Questão do Tempo</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com domínio frio e deliberado — a ira agora comprimida em ideologia)</span> O capitalismo, em seu desenvolvimento final — à medida que se concentra, que a concorrência elimina o pequeno produtor, que o capital financeiro subsume o capital industrial — produz contradições que se acumulam para além de qualquer mecanismo corretivo. A taxa de lucro cai. O capital busca escoadouros cada vez mais desesperados. Imperialismo, militarismo, especulação financeira — não são aberrações. São os sintomas terminais do capitalismo. Imposto algum sobre a terra, administrado por voto democrático, deterá essa trajetória. O sistema tem o seu próprio ímpeto, e ele conduz aonde conduz.</p>
+
+    <p>O Sr. George pode vestir esse diagnóstico em sua própria linguagem. Pode chamar a válvula de escoamento de ausente. O rótulo não importa. O que importa é que a trajetória não pode ser corrigida de dentro. E qualquer teoria que afirme o contrário — por mais sinceramente sustentada — funciona objetivamente como defesa do <em>status quo</em>, independentemente de suas intenções.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(notando o lance com clareza visível)</span></p>
+
+    <p>O senhor acaba de fazer algo que peço ao salão que observe com cuidado. O senhor reconheceu — indiretamente, na fórmula do <em>“ele pode chamá-la”</em> — que o mecanismo que descrevo é real. E imediatamente girou para a alegação de que, esteja eu certo ou não, a minha teoria <em>funciona</em> como defesa do capitalismo.</p>
+
+    <p>O senhor ouve o que é esse argumento? Não é um confronto com a questão de eu estar certo. É um veredicto sobre o que significaria, para o seu arcabouço, eu estar certo. E como o seu arcabouço não pode acomodar que eu esteja certo, eu hei de estar — quaisquer que sejam minhas intenções — a serviço do inimigo.</p>
+
+    <p>Isto não é análise. É um sistema fechado a proteger-se da evidência.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com finalidade fria)</span> A função objetiva de uma teoria não é determinada pelas intenções de seu autor. Uma reforma que estabiliza o capitalismo serve ao capitalismo. Não é uma acusação pessoal. É uma observação estrutural.</p>
+
+    <p><span class="speaker">George:</span> É uma manobra intelectual notável. Significa que o senhor não pode estar errado — pois toda evidência contrária é reclassificada como prova da corrupção de quem a apresenta. Já vi sistemas religiosos com a mesma arquitetura. São muito confortáveis de habitar e muito difíceis de demover pela razão a partir de fora.</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Nono Assalto</div>
+    <h2>Escala, Burocracia e o Problema do Saber Humano</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker">George:</span> Há uma questão que rondamos a noite inteira sem nomear diretamente. Não é meramente uma questão de economia. É uma questão de conhecimento.</p>
+
+    <p>Quem sabe o bastante para dirigir uma sociedade?</p>
+
+    <p>O senhor fala em coordenação racional — em produção organizada conscientemente, em vez de pelo caos dos mercados. Alguém há de decidir quantas botas devem ser produzidas, onde o aço deve ser alocado, se o cobre pertence às ferrovias ou aos fios elétricos. Sob um mercado livre, essas decisões emergem de milhões de juízos independentes — confusos, imperfeitos, amiúde desperdiçadores, mas extraordinariamente adaptativos. Os preços comunicam uma informação que ministério algum jamais poderia reunir por completo.</p>
+
+    <p>A sua alternativa exige administração concentrada numa escala que civilização alguma jamais sustentou com êxito sem endurecer em burocracia — e, por fim, em algo consideravelmente pior.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(no tom de quem deixou de achar a conversa digna de ser travada)</span></p>
+
+    <p>O senhor descreve o capitalismo como sabedoria descentralizada e espontânea. Não o é. A indústria moderna já é planejada — internamente, deliberadamente, em escala enorme. A ferrovia planeja. O truste planeja. A Standard Oil planeja. O seu celebrado sistema de preços opera nas margens entre vastas estruturas organizadas que já se assemelham, em sua coordenação interna, exatamente àquilo que o senhor declara impossível.</p>
+
+    <p>A diferença é que, sob o capitalismo, essas estruturas servem à acumulação privada. Sob o socialismo, serviriam à necessidade humana. O senhor confunde a questão de <em>se</em> a coordenação é possível com a questão de <em>a quais interesses</em> ela serve.</p>
+
+    <p><span class="speaker">George:</span> É um ponto real, e o enfrentei honestamente em assaltos anteriores. Noto que o senhor não esteve presente nesses assaltos — ou antes, esteve presente, porém ocupado com outras preocupações.</p>
+
+    <p>A questão de a quais interesses a coordenação serve é importante. Mas não responde à questão de quem decide. Sob o seu sistema, a decisão sobre a necessidade humana é tomada por quem quer que controle o aparato coordenador. O senhor não resolveu o problema do poder. O senhor o concentrou e o rebatizou.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com desdém, mal olhando para George agora)</span> Eis a objeção liberal de sempre. Já a respondi em minha obra publicada. Não me proponho a ensaiar três volumes numa única noite, em benefício de uma plateia que poderia lê-los.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(à plateia, com uma calma agora quase pesarosa)</span></p>
+
+    <p>Ele nos remeteu aos seus livros. É o que acontece quando o argumento se esgota — a conversa se encerra e abre-se a bibliografia. Eu li os livros, Sr. Marx. As minhas perguntas nascem de tê-los lido com cuidado, não da ignorância deles.</p>
+
+    <p>Mas talvez seja esse o problema. O senhor se sente mais à vontade com leitores do que com interlocutores.</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Décimo Assalto</div>
+    <h2>O Que Devemos Uns aos Outros — O Fundamento Moral</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker">George:</span> Quero recuar do mecanismo e falar de algo mais fundamental — a base moral do que cada um de nós propõe. O que devem os seres humanos uns aos outros?</p>
+
+    <p>A minha resposta é esta: devemos uns aos outros o acesso igual aos dons da natureza — a terra, que homem nenhum fez — e, além disso, devemos uns aos outros o produto integral de nosso próprio trabalho e engenho. A terra pertence igualmente a todas as gerações. O seu valor locativo, devidamente coletado, custeia as necessidades comuns da civilização. Tudo acima disso pertence a quem quer que o crie. Não é caridade. Não é redistribuição. É a separação exata entre o que é legitimamente comum e o que é legitimamente privado.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com o afeto chão de quem profere um veredicto em vez de formular um argumento)</span> O fundamento moral que o senhor descreve é o fundamento moral do liberalismo — a santidade da propriedade individual, a neutralidade das regras, a fantasia de que um mercado corrigido produz resultados justos. É a moral da burguesia vestida na linguagem do direito natural.</p>
+
+    <p>Os seres humanos devem uns aos outros a liberdade em relação à exploração. Ponto final. Não exploração corrigida. Não exploração mais proporcional. Liberdade em relação a ela. O seu sistema não entrega nem uma coisa nem outra.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(genuinamente)</span></p>
+
+    <p>Concordo que os seres humanos devem uns aos outros a liberdade em relação à exploração. Partilhamos inteiramente essa convicção. Onde diferimos é em se o mecanismo que o senhor propõe a entrega — ou produz algo pior sob o mesmo nome.</p>
+
+    <p>O senhor passou esta noite a categorizar os meus motivos, a descartar as minhas evidências, e a recuar para a sua obra publicada quando pressionado. Não o digo com amargura. Digo-o porque é relevante para a questão moral que o senhor acaba de levantar. Um homem que não consegue enfrentar a discordância com honestidade num salão de conferências não está a descrever uma espécie diferente de exploração. Está a demonstrar o temperamento que torna a exploração inevitável, qualquer que seja o nome do sistema.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com desprezo frio)</span> Psicologizar o oponente é o último refúgio de quem perdeu o argumento.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(calmamente)</span></p>
+
+    <p>E descartar a observação como psicologismo é o último refúgio de quem sabe que ela acertou.</p>
+  </div>
+
+  <div class="round">
+    <div class="num">Décimo Primeiro Assalto</div>
+    <h2>Inovação, Recompensa e o Dividendo dos Cidadãos</h2>
+    <div class="orn">— ❧ —</div>
+  </div>
+
+  <div class="body">
+    <p><span class="speaker m">Marx:</span> Ainda que o seu imposto sobre a terra fosse implementado, a questão fundamental permanece. Os trabalhadores não controlam a produção. Permanecem subordinados ao capitalista que possui a fábrica, o maquinário, a direção do trabalho. Produzem uma riqueza que não possuem. Eis o cerne irredutível da alienação sob o capitalismo — e reforma tributária alguma o alcança.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(inclinando-se para a frente, falando com intensidade tranquila)</span> O homem que concebe um grande aperfeiçoamento — que organiza milhares de detalhes móveis na mente, que arrisca sua reputação e seu capital — não é um parasita do trabalho. Ele cria as próprias condições sob as quais o trabalho se torna imensamente mais produtivo. E se o operário crê que pode fazê-lo melhor, que faça o que Tesla fez quando Edison se recusou a ver o que a corrente alternada poderia se tornar. Tesla não tomou o laboratório de Edison. Ele partiu. Encontrou sócios. Competiu. E a melhor ideia venceu.</p>
+
+    <p>Mas eis o que transforma inteiramente o cálculo — e quero que o salão compreenda isto com clareza, pois é a parte de minha proposta que recebe menos atenção e merece mais.</p>
+
+    <p>O imposto sobre o valor da terra não custeia meramente o governo em abstrato. Suas receitas pertencem à comunidade que as criou — a cada cidadão, igualmente, incondicionalmente, por direito. Não caridade. Não assistência dispensada por um ministério aos pobres merecedores depois que satisfizeram a um inspetor. Cada homem, mulher e criança — um dividendo direto e igual sobre o valor da herança comum a que chamamos terra.</p>
+
+    <p>O trabalhador preso a uma fábrica miserável passa a ter um piso sob os pés que empregador nenhum pode remover. Pode recusar condições degradantes. Pode poupar. Pode competir. Tem independência material — não a propriedade coletiva teórica que o senhor oferece, que na prática significa que ele possui tudo no nome e não controla nada de fato.</p>
+
+    <p>E reparem o que isto exige. Ministério nenhum para determinar quem merece auxílio. Assistente social nenhum. Formulário nenhum em três vias. Nenhum aparato burocrático que — como suas próprias observações sobre a captura institucional corretamente notam — inevitavelmente se torna instrumento dos interesses que fora concebido para conter. O valor da terra é avaliado com transparência, coletado e distribuído igual e diretamente. Um amanuense competente poderia administrá-lo. Não há o que um funcionário corrupto dispense seletivamente. Nada que exija do cidadão curvar-se diante de um administrador para receber o que lhe é de direito.</p>
+
+    <p><span class="speaker m">Marx:</span> <span class="stage">(com indiferença chã)</span> Um dividendo das receitas do imposto sobre a terra é um suborno — suficiente para comprar a aquiescência política do trabalhador, deixando intacta a estrutura de sua exploração. O senhor descreveu, com considerável eloquência, um mecanismo para estabilizar o capitalismo dando à classe trabalhadora um pequeno quinhão em sua continuidade. Isto não é libertação. É pacificação com um preâmbulo filosófico.</p>
+
+    <p>O dono da fábrica ainda possui a fábrica. O trabalhador ainda vende seu trabalho. O mais-valor ainda flui para o alto. O senhor ajustou o montante do furto. Não pôs fim a ele.</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(enfrentando isto diretamente)</span></p>
+
+    <p>Um trabalhador com um piso de renda garantido, capacidade genuína de poupança e a possibilidade prática de sair e competir não é o proletário miserabilizado de sua análise. É um homem livre fazendo uma escolha genuína. O senhor chama o seu dividendo de suborno. Eu o chamo de diferença entre um homem que precisa aceitar o que lhe ofereçam e um homem que pode ir embora.</p>
+
+    <p>O senhor não quer que ele possa ir embora. Porque um trabalhador que pode ir embora não precisa da sua revolução.</p>
+
+    <p class="stage">(A expressão de Marx não muda. Nada ouviu nos últimos quatro assaltos que considere digno de resposta. A categorização foi feita no Quarto Assalto, e foi final.)</p>
+  </div>
+
+  <div class="closing-flag"><span>Discursos de Encerramento</span></div>
+
+  <div class="body">
+    <p><span class="speaker m">Marx:</span> O Sr. George falou esta noite com considerável fluência em favor de uma posição que serve, quaisquer que sejam suas intenções, aos interesses dos que mais se beneficiam da ordem vigente. O seu imposto sobre a terra deixa o capital intocado. O seu dividendo dos cidadãos estabiliza a relação salarial tornando-a marginalmente mais tolerável. A sua fé na reforma democrática ignora a captura estrutural das instituições democráticas pela classe cujo poder essas instituições existem para proteger.</p>
+
+    <p>Ele não é um homem estúpido. É algo mais útil à classe possuidora do que um homem estúpido — é um homem sincero. Um reformador sincero que traça a linha precisamente no ponto em que a transformação genuína começaria é mais eficaz em impedir essa transformação do que qualquer defensor declarado do <em>status quo</em>. A classe trabalhadora que lê George e sente que algo foi feito em seu nome é uma classe trabalhadora que não se organizará pela mudança que de fato a libertaria.</p>
+
+    <p>Não espero que o Sr. George concorde. Não espero, a esta altura, que ele compreenda. O seu arcabouço não o permite.</p>
+
+    <p>A classe trabalhadora será libertada por sua própria luta e por sua consciência em desenvolvimento — ou não será libertada de modo algum. A história se move aonde se move. Reforma tributária alguma, administrada por instituições capturadas, alterará sua trajetória. O que propus esta noite não é confortável. Nunca o pretendeu ser. A transformação genuína nunca o é.</p>
+
+    <p class="stage">(Ele recolhe seus papéis. Não olha para George.)</p>
+
+    <p><span class="speaker">George:</span> <span class="stage">(uma longa pausa antes de falar — não para efeito, mas porque escolhe as palavras com cuidado incomum)</span></p>
+
+    <p>O meu colega acaba de proferir um discurso de encerramento no qual não enfrentou um único argumento que apresentei esta noite. Descreveu aquilo que as minhas ideias <em>funcionam como</em>, em vez de se são corretas. Explicou a minha sinceridade como uma forma de utilidade aos meus supostos senhores. Encerrou sem olhar para mim.</p>
+
+    <p>Quero nomear o que isto é, pois creio que importa para além desta noite.</p>
+
+    <p>O que o Sr. Marx demonstrou hoje — com clareza crescente à medida que a tarde avançava — é um sistema de pensamento impermeável à evidência. Não porque a evidência não exista, mas porque o arcabouço converte toda evidência contrária em prova do próprio arcabouço. Se o senhor concorda com ele, é consciente de classe. Se discorda, está capturado, é ingênuo ou cúmplice. Se aponta isto, está psicologizando. Se insiste, é um defensor objetivo do capitalismo, independentemente do que de fato creia ou argumente.</p>
+
+    <p>Isto não é uma filosofia política. É um sistema epistemológico fechado — e vale compreendê-lo como tal, pois é extraordinariamente resiliente ao engajamento racional, e extraordinariamente perigoso quando adquire o poder que busca.</p>
+
+    <p>Passei esta noite tentando ter uma conversa honesta com um homem brilhante sobre um problema real. Creio que o monopólio da terra é a raiz da pobreza que nos cerca. Creio que o dividendo dos cidadãos — universal, incondicional, administrado de modo simples o bastante para que a corrupção nada tenha onde se agarrar — transformaria as condições materiais de cada pessoa trabalhadora deste país no espaço de uma geração. Creio nessas coisas com base em evidência e raciocínio que apresentei abertamente e defendi honestamente.</p>
+
+    <p>O Sr. Marx crê que estou errado. Talvez tenha razão. Mas não o argumentou esta noite. Ele o processou.</p>
+
+    <p>Deixo à plateia tirar as próprias conclusões — não sobre quem venceu um debate, mas sobre o que significa quando um homem que não tolera ser questionado num salão londrino se propõe a edificar um Estado sem saídas.</p>
+
+    <p>O progresso e a pobreza não são companheiros naturais. Caminham juntos apenas porque construímos um mundo que tributa o que os homens criam e subsidia o que eles meramente detêm. Esse mundo não é inevitável. Não é natural. É uma escolha.</p>
+
+    <p>E pode ser des-escolhido — por meios democráticos, imperfeitos e lentos, sem uma vanguarda, sem uma ditadura de transição, sem pedir a ninguém que confie em que o poder será entregue uma vez tomado.</p>
+
+    <p>Simplesmente sendo honesto sobre quem criou o quê.</p>
+
+    <p class="stage">(Ele não se volta para Marx em busca de resposta. Nenhuma vem.)</p>
+  </div>
+
+  <hr class="fat">
+
+  <div class="epilogue">
+    <p>O debate termina.</p>
+    <p>Marx escreve a Engels na semana seguinte. Descreve George como “a última defesa ideológica do capitalismo, vestida na linguagem da reforma”. Não menciona os argumentos que George formulou. Não menciona o Dividendo dos Cidadãos. Não menciona o instante em que o salão emudeceu quando George, com calma, recitou a própria biografia.</p>
+    <p>Menciona, de passagem, que George foi mais difícil do que o esperado.</p>
+    <p>É o mais perto de uma concessão a que ele jamais chegará.</p>
+
+    <hr class="thin">
+
+    <p>George regressa a Nova York. Morrerá dez dias antes da eleição municipal de 1897, ainda em campanha, ainda convicto de que a democracia pode entregar o que a revolução não pode. Morrerá em meio a uma frase, por assim dizer — ainda tentando.</p>
+
+    <p>Tesla, naquela noite, está em seu laboratório na Rua Houston, arrancando eletricidade do ar, alheio a ambos os homens, devedor das condições que ambos, cada um a seu modo, tentavam criar.</p>
+
+    <hr class="thin">
+
+    <p>A história pôs à prova ambas as visões no século que se seguiu.</p>
+
+    <p class="verdict">Uma produziu <em>gulags</em>.<br>A outra jamais foi tentada.</p>
+
+    <p>A ferida que ambos contemplavam continua aberta.</p>
+  </div>
+
+  <div class="colophon">
+    O Arauto d'Economia &nbsp;·&nbsp; Composto e impresso em tipo móvel &nbsp;·&nbsp; MDCCCLXXXVII
+    <br>Simulação imaginada — publicada como peça de ficção histórica
+  </div>
+
+</div>
+</body>
+</html>

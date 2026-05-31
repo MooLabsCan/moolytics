@@ -8,6 +8,7 @@ import SocietyFailedPrisons from './pages/Society-Failed-Prisons.vue'
 import EmployerFines from './pages/employerFines.vue'
 import PolicyVsEfficiency from './pages/PolicyVsEfficiency.vue'
 import Canadasabatage from './pages/Canadasabatage.vue'
+import FinlandKOK from './pages/FinlandKOK.vue'
 import MarxVsGeorge from './pages/MarxVsGeorge.vue'
 import MarxVsGeorge2 from './pages/MarxVsGeorge2.vue'
 import MarxVsGeorgeTitlePage from './pages/MarxVsGeorgeTitlePage.vue'
@@ -173,6 +174,7 @@ const isHome = computed(() => route.value === 'home')
     <EmployerFines v-else-if="route === 'article' && params.id==='employer-fines'" :lang="lang" />
     <PolicyVsEfficiency v-else-if="route === 'article' && params.id==='policy-vs-efficiency'" :lang="lang" :id="params.id" />
     <Canadasabatage v-else-if="route === 'article' && params.id==='canadasabatage'" :lang="lang" :id="params.id" />
+    <FinlandKOK v-else-if="route === 'article' && params.id==='finland-kok'" :lang="lang" :id="params.id" />
     <MarxVsGeorge v-else-if="route === 'article' && params.id==='marx-vs-george'" :lang="lang" :id="params.id" />
     <MarxVsGeorge2 v-else-if="route === 'article' && params.id==='marx-vs-george-2'" :lang="lang" :id="params.id" />
     <div v-else>Not Found</div>

@@ -2,6 +2,8 @@
 import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import MarxVsGeorge from './MarxVsGeorge.vue'
 import MarxVsGeorge2 from './MarxVsGeorge2.vue'
+import MarxVsGeorgePt from './MarxVsGeorgePt.vue'
+import MarxVsGeorge2Pt from './MarxVsGeorge2Pt.vue'
 const props = defineProps({ lang: { type: String, default: 'en' }, id: { type: String, default: 'marx-george-intro' } })
 
 const canonicalUrl = computed(() => `#/article/${props.id}`)
@@ -252,37 +254,67 @@ const encodedText = encodeURIComponent(shareText)
           <!-- ── VERSION SELECTION ── -->
           <div class="version-select-strip">
             <div class="vs-rule-top"></div>
-            <div class="vs-head">Choose Your Account &mdash; Both Are Published in Full</div>
+            <div class="vs-head">
+              <template v-if="props.lang === 'pt'">Escolha a Sua Vers&atilde;o &mdash; Ambas Publicadas na &Iacute;ntegra</template>
+              <template v-else>Choose Your Account &mdash; Both Are Published in Full</template>
+            </div>
             <div class="vs-boxes">
 
               <div class="vs-box">
-                <div class="vs-box-label">Version the First</div>
-                <div class="vs-box-title">The Generous Account</div>
+                <div class="vs-box-label">
+                  <template v-if="props.lang === 'pt'">Vers&atilde;o Primeira</template>
+                  <template v-else>Version the First</template>
+                </div>
+                <div class="vs-box-title">
+                  <template v-if="props.lang === 'pt'">O Relato Generoso</template>
+                  <template v-else>The Generous Account</template>
+                </div>
                 <div class="vs-box-rule"></div>
-                <p class="vs-box-desc">Mr. Marx is here portrayed as the interlocutor his finest arguments deserve
-                  &mdash; engaged, exacting, and ultimately willing to concede what is true. The debate occasionally
-                  grows heated; it never grows dishonest. The two men find, at the evening&rsquo;s close, that they
-                  agree on more than either predicted.</p>
-                <p class="vs-box-desc vs-box-note"><em>The debate as one might wish it had gone.</em></p>
+                <p class="vs-box-desc">
+                  <template v-if="props.lang === 'pt'">O Sr. Marx é aqui retratado como o interlocutor que os seus melhores argumentos merecem &mdash; empenhado, exigente e, ao final, disposto a conceder o que é verdadeiro. O debate ocasionalmente esquenta; jamais se desonra. Os dois homens descobrem, ao fim da noite, que concordam em mais do que qualquer um previra.</template>
+                  <template v-else>Mr. Marx is here portrayed as the interlocutor his finest arguments deserve &mdash; engaged, exacting, and ultimately willing to concede what is true. The debate occasionally grows heated; it never grows dishonest. The two men find, at the evening&rsquo;s close, that they agree on more than either predicted.</template>
+                </p>
+                <p class="vs-box-desc vs-box-note">
+                  <em>
+                    <template v-if="props.lang === 'pt'">O debate como gostar&iacute;amos que tivesse sido.</template>
+                    <template v-else>The debate as one might wish it had gone.</template>
+                  </em>
+                </p>
                 <div class="vs-actions">
-                  <button class="vs-btn" :class="{ 'vs-btn-active': selectedVersion === 'v1' }" @click="selectVersion('v1')">Read &rarr;</button>
+                  <button class="vs-btn" :class="{ 'vs-btn-active': selectedVersion === 'v1' }" @click="selectVersion('v1')">
+                    <template v-if="props.lang === 'pt'">Ler &rarr;</template>
+                    <template v-else>Read &rarr;</template>
+                  </button>
                 </div>
               </div>
 
               <div class="vs-divider"></div>
 
               <div class="vs-box">
-                <div class="vs-box-label">Version the Second</div>
-                <div class="vs-box-title">The Historical Record</div>
+                <div class="vs-box-label">
+                  <template v-if="props.lang === 'pt'">Vers&atilde;o Segunda</template>
+                  <template v-else>Version the Second</template>
+                </div>
+                <div class="vs-box-title">
+                  <template v-if="props.lang === 'pt'">O Registro Hist&oacute;rico</template>
+                  <template v-else>The Historical Record</template>
+                </div>
                 <div class="vs-box-rule"></div>
-                <p class="vs-box-desc">Mr. Marx is here portrayed with greater fidelity to his documented temperament.
-                  By the Fourth Round he has stopped engaging Mr. George&rsquo;s arguments and begun categorising the
-                  man himself. Mr. George responds with a precision that grows, as the evening advances, into the
-                  sharpest indictment of the night &mdash; not of Mr. Marx&rsquo;s economics, but of the style of
-                  thought that produced them.</p>
-                <p class="vs-box-desc vs-box-note"><em>One produced gulags. The other was never tried.</em></p>
+                <p class="vs-box-desc">
+                  <template v-if="props.lang === 'pt'">O Sr. Marx é aqui retratado com maior fidelidade ao seu temperamento documentado. Na Quarta Rodada, ele já deixou de debater os argumentos do Sr. George e passou a classificar o próprio homem. O Sr. George responde com uma precisão que cresce, à medida que a noite avança, até se tornar a mais aguda acusação da noite &mdash; não da economia do Sr. Marx, mas do estilo de pensamento que a produziu.</template>
+                  <template v-else>Mr. Marx is here portrayed with greater fidelity to his documented temperament. By the Fourth Round he has stopped engaging Mr. George&rsquo;s arguments and begun categorising the man himself. Mr. George responds with a precision that grows, as the evening advances, into the sharpest indictment of the night &mdash; not of Mr. Marx&rsquo;s economics, but of the style of thought that produced them.</template>
+                </p>
+                <p class="vs-box-desc vs-box-note">
+                  <em>
+                    <template v-if="props.lang === 'pt'">Um produziu gulags. O outro jamais foi testado.</template>
+                    <template v-else>One produced gulags. The other was never tried.</template>
+                  </em>
+                </p>
                 <div class="vs-actions">
-                  <button class="vs-btn" :class="{ 'vs-btn-active': selectedVersion === 'v2' }" @click="selectVersion('v2')">Read &rarr;</button>
+                  <button class="vs-btn" :class="{ 'vs-btn-active': selectedVersion === 'v2' }" @click="selectVersion('v2')">
+                    <template v-if="props.lang === 'pt'">Ler &rarr;</template>
+                    <template v-else>Read &rarr;</template>
+                  </button>
                 </div>
               </div>
 
@@ -320,8 +352,14 @@ const encodedText = encodeURIComponent(shareText)
   </div><!-- end np-wrapper -->
 
   <div v-if="selectedVersion !== null" class="article-embed" ref="articleRef">
-    <MarxVsGeorge v-if="selectedVersion === 'v1'" :lang="props.lang" :id="'marx-vs-george'" />
-    <MarxVsGeorge2 v-else :lang="props.lang" :id="'marx-vs-george-2'" />
+    <template v-if="props.lang === 'pt'">
+      <MarxVsGeorgePt v-if="selectedVersion === 'v1'" />
+      <MarxVsGeorge2Pt v-else />
+    </template>
+    <template v-else>
+      <MarxVsGeorge v-if="selectedVersion === 'v1'" :lang="props.lang" :id="'marx-vs-george'" />
+      <MarxVsGeorge2 v-else :lang="props.lang" :id="'marx-vs-george-2'" />
+    </template>
   </div>
 </template>
 
