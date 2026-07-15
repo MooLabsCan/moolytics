@@ -5,6 +5,19 @@
 
 export default [
   {
+    id: 'not-all-left-is-equal',
+    href: '#/article/not-all-left-is-equal',
+    date: '2026-07-15',
+    en: {
+      title: 'Not All "Left" Is the Same, And the Difference Determines Whether the Working Class Actually Rises',
+      desc: 'Brazil\'s redistribution-and-monopoly left and the Nordic growth-and-mobility left both claim "social democracy" — but only one delivers rising wages and real mobility.'
+    },
+    pt: {
+      title: 'Nem Toda "Esquerda" é Igual, e a Diferença Determina se a Classe Trabalhadora Realmente Ascende',
+      desc: 'A esquerda da redistribuição-e-monopólio no Brasil e a esquerda do crescimento-e-mobilidade nórdica reivindicam a mesma "social-democracia" — mas só uma entrega salários crescentes e mobilidade real.'
+    }
+  },
+  {
     id: 'marx-george-intro',
     href: '#/article/marx-george-intro',
     date: '2025-11-13',

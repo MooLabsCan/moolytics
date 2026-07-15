@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick, defineAsyncComponent } from 'vue'
 import Home from './pages/Home.vue'
 import ArticleBrazilEstonia from './pages/ArticleBrazilEstonia.vue'
 import MarketEfficiencyGermany from './pages/MarketEfficiencyGermany.vue'
@@ -12,8 +12,16 @@ import FinlandKOK from './pages/FinlandKOK.vue'
 import MarxVsGeorge from './pages/MarxVsGeorge.vue'
 import MarxVsGeorge2 from './pages/MarxVsGeorge2.vue'
 import MarxVsGeorgeTitlePage from './pages/MarxVsGeorgeTitlePage.vue'
+import NotAllLeftIsEqual from './pages/NotAllLeftIsEqual.vue'
 import AdBanner from './components/AdBanner.vue'
 import AdSkyscraper from './components/AdSkyscraper.vue'
+
+// Dev-only content-scaffolding tool — never bundled/reachable in production
+// builds, so it needs no access control. import.meta.env.DEV is statically
+// false in `vite build`, so this dynamic import is dead code there.
+const AdminWorkstation = import.meta.env.DEV
+  ? defineAsyncComponent(() => import('./pages/AdminWorkstation.vue'))
+  : null
 
 function normalizeLang(l) {
   const v = String(l || '').toLowerCase()
@@ -60,6 +68,8 @@ function parseRoute() {
     const langParam = parts[2] || query.lang || ''
     return { name: 'article', params: { id, lang: langParam } }
   }
+
+  if (parts[0] === 'admin' && import.meta.env.DEV) return { name: 'admin', params: {} }
 
   return { name: 'home', params: {} }
 }
@@ -163,6 +173,7 @@ const isHome = computed(() => route.value === 'home')
 
   <!-- Full-bleed pages render outside the constrained .content wrapper -->
   <MarxVsGeorgeTitlePage v-if="route === 'article' && params.id==='marx-george-intro'" :lang="lang" :id="params.id" />
+  <AdminWorkstation v-else-if="route === 'admin'" />
 
   <main v-else class="content">
     <AdBanner />
@@ -177,6 +188,7 @@ const isHome = computed(() => route.value === 'home')
     <FinlandKOK v-else-if="route === 'article' && params.id==='finland-kok'" :lang="lang" :id="params.id" />
     <MarxVsGeorge v-else-if="route === 'article' && params.id==='marx-vs-george'" :lang="lang" :id="params.id" />
     <MarxVsGeorge2 v-else-if="route === 'article' && params.id==='marx-vs-george-2'" :lang="lang" :id="params.id" />
+    <NotAllLeftIsEqual v-else-if="route === 'article' && params.id==='not-all-left-is-equal'" :lang="lang" :id="params.id" />
     <div v-else>Not Found</div>
     <AdBanner />
   </main>
