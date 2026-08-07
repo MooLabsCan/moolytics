@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moolytics — Geo-Economics in Focus</title>
   <meta name="description" content="Data-driven analysis on public policy and markets — with a geo-economics lens. Articles on land value tax, tax policy, market efficiency, and economic reform.">
+  <meta name="keywords" content="Moolytics, geo-economics, public policy, market efficiency, tax policy, political economy, land value tax, Georgism, sports history, curling, Brazil curling">
   <link rel="canonical" href="/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Moolytics — Geo-Economics in Focus">

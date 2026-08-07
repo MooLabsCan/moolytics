@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brazil's Dividend Exemption: An Outdated Model Threatening Growth &amp; Social Mobility | Moolytics</title>
   <meta name="description" content="Two tax systems. One obeys microeconomic law and thrives. The other defies it and rots. Brazil's dividend exemption vs Estonia's reinvestment-first model — a study in policy outcomes.">
+  <meta name="keywords" content="Brazil Estonia taxation, dividend taxation, Estonia corporate tax, Brazil tax policy, profit tax, tax on distribution, business investment, tax reform">
   <link rel="canonical" href="/article/brazil-estonia">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Brazil's Dividend Exemption vs Estonia's Reinvestment Model">

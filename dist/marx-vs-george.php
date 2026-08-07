@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marx vs. George: The Great Debate — Version I: The Generous Account | Moolytics</title>
   <meta name="description" content="A romanticised 1887 debate transcript: Karl Marx and Henry George on Land, Labour, and the Root of Human Misery. Marx engaged, precise, and ultimately willing to concede. The debate as it might ideally have unfolded.">
+  <meta name="keywords" content="Karl Marx, Henry George, Marx vs George, land value tax, political economy, Georgism, socialism, Progress and Poverty, Das Kapital, single tax">
   <link rel="canonical" href="/article/marx-vs-george">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Marx vs. George — Version I: The Generous Account (The Standard, 1887)">

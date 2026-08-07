@@ -1,6 +1,8 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount, nextTick, defineAsyncComponent } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick, defineAsyncComponent, watch } from 'vue'
 import Home from './pages/Home.vue'
+import articlesData from './data/articles.js'
+import { applyArticleSeo, applyHomeSeo } from './utils/seo.js'
 import ArticleBrazilEstonia from './pages/ArticleBrazilEstonia.vue'
 import MarketEfficiencyGermany from './pages/MarketEfficiencyGermany.vue'
 import GeorgeEastWest from './pages/George-East-West.vue'
@@ -13,6 +15,8 @@ import MarxVsGeorge from './pages/MarxVsGeorge.vue'
 import MarxVsGeorge2 from './pages/MarxVsGeorge2.vue'
 import MarxVsGeorgeTitlePage from './pages/MarxVsGeorgeTitlePage.vue'
 import NotAllLeftIsEqual from './pages/NotAllLeftIsEqual.vue'
+import CurlingsGreatestShots from './pages/CurlingsGreatestShots.vue'
+import BrazilCurling from './pages/BrazilCurling.vue'
 import AdBanner from './components/AdBanner.vue'
 import AdSkyscraper from './components/AdSkyscraper.vue'
 
@@ -80,7 +84,19 @@ function syncRoute() {
   params.value = r.params
   if (r.params?.lang) setLang(r.params.lang)
   // sanitize after route changes
-  nextTick(() => sanitizeAll())
+  nextTick(() => {
+    applyCurrentSeo()
+    sanitizeAll()
+  })
+}
+
+function applyCurrentSeo() {
+  if (route.value === 'article') {
+    const article = articlesData.find((item) => item.id === params.value.id)
+    if (applyArticleSeo({ article, lang: lang.value })) return
+  }
+
+  applyHomeSeo({ lang: lang.value, articles: articlesData })
 }
 
 // Text sanitizer: remove select emojis and replace em/en dashes with simple hyphen
@@ -154,6 +170,10 @@ onBeforeUnmount(() => {
 })
 
 const isHome = computed(() => route.value === 'home')
+
+watch([route, params, lang], () => {
+  nextTick(() => applyCurrentSeo())
+}, { flush: 'post' })
 </script>
 
 <template>
@@ -189,6 +209,8 @@ const isHome = computed(() => route.value === 'home')
     <MarxVsGeorge v-else-if="route === 'article' && params.id==='marx-vs-george'" :lang="lang" :id="params.id" />
     <MarxVsGeorge2 v-else-if="route === 'article' && params.id==='marx-vs-george-2'" :lang="lang" :id="params.id" />
     <NotAllLeftIsEqual v-else-if="route === 'article' && params.id==='not-all-left-is-equal'" :lang="lang" :id="params.id" />
+    <CurlingsGreatestShots v-else-if="route === 'article' && params.id==='curlings-greatest-shots'" :lang="lang" :id="params.id" />
+    <BrazilCurling v-else-if="route === 'article' && params.id==='brazil-curling'" :lang="lang" :id="params.id" />
     <div v-else>Not Found</div>
     <AdBanner />
   </main>

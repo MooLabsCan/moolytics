@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Henry George, the Prophet Rejected by His Own but Embraced in the East | Moolytics</title>
   <meta name="description" content="In 1879 Henry George published Progress and Poverty. The West debated it and discarded it. Hong Kong and Singapore made it state policy — and became the world's most successful urban economies.">
+  <meta name="keywords" content="Henry George, land value tax, Hong Kong land policy, Singapore land policy, land rents, Georgism, urban economics, public revenue">
   <link rel="canonical" href="/article/george-east-west">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Henry George: The Prophet Rejected by His Own but Embraced in the East">

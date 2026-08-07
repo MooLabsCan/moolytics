@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canada's Financial Sumptuary Laws: How Regulation Sabotaged Its Own Middle Class | Moolytics</title>
   <meta name="description" content="How Canada's accredited-investor rules shut ordinary Canadians out of venture capital markets, strangled junior exchanges, and reversed decades of middle-class wealth creation.">
+  <meta name="keywords" content="Canada venture regulation, TSXV, retail investors, accredited investor rules, venture capital Canada, middle class investing, securities regulation, capital formation">
   <link rel="canonical" href="/article/canadasabatage">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Canada's Financial Sumptuary Laws: How Regulation Sabotaged Its Own Middle Class">

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Global Pivot to Market Efficiency: Estonia, Singapore, and Germany | Moolytics</title>
   <meta name="description" content="Adaptation in progress — but have we truly learned the lessons? How Estonia, Singapore, and Germany illustrate the spectrum of market efficiency reform in an era of geopolitical fractures and AI-driven disruption.">
+  <meta name="keywords" content="Germany market efficiency, German economy, Estonia reform, Singapore economy, economic dynamism, regulatory reform, AI economy, competitiveness">
   <link rel="canonical" href="/article/market-efficiency-germany">
   <meta property="og:type" content="article">
   <meta property="og:title" content="The Global Pivot to Market Efficiency: Estonia, Singapore, and Germany">

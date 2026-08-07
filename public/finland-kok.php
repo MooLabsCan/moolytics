@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finland's Free-Market Sauna: KOK vs PS | Moolytics</title>
   <meta name="description" content="Finland's 2023 smart split: market-minded voters back KOK's pro-efficiency reforms while populists chase short-term noise. A light, data-tinged read on Finland's pro-market turn.">
+  <meta name="keywords" content="Finland election 2023, National Coalition Party, KOK, Finns Party, market reforms Finland, free market policy, Nordic economy, Finnish politics">
   <link rel="canonical" href="/article/finland-kok">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Finland's Free-Market Sauna: Clever Minds Steam Ahead While Populists Sweat the Short-Term">

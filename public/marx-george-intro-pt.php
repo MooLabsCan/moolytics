@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>O Grande Debate: Marx vs. George — Dois Relatos, Uma Noite | Moolytics</title>
   <meta name="description" content="Londres, 1887. Dois relatos de um debate imaginado entre Karl Marx e Henry George sobre terra, trabalho e a raiz da miséria humana. Dois relatos — O Generoso e O Registro Histórico — publicados lado a lado.">
+  <meta name="keywords" content="Karl Marx, Henry George, Marx vs George, imposto sobre valor da terra, economia politica, Georgismo, socialismo, Progress and Poverty, Das Kapital">
   <link rel="canonical" href="/article/marx-george-intro/pt">
   <meta property="og:type" content="article">
   <meta property="og:title" content="O Grande Debate: Marx vs. George — Dois Relatos, Uma Noite">

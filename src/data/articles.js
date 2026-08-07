@@ -5,6 +5,29 @@
 
 export default [
   {
+    id: 'brazil-curling',
+    href: '#/article/brazil-curling',
+    date: '2026-08-06',
+    en: {
+      title: 'Curling Without Winter: The Improbable Rise of Brazil’s National Team',
+      desc: 'Brazil has one official curling rink, a federation founded by the country’s first bobsledder, and a national team built from a Facebook post, a Quebec exchange program, and a youth program bridging São Paulo’s Morumbi and Real Parque. A researched account of how curling took root in a country with no winter.'
+    },
+    pt: {
+      title: 'Curling Sem Inverno: A Ascensão Improvável da Seleção Brasileira',
+      desc: 'O Brasil tem uma única pista oficial de curling, uma federação fundada pelo primeiro bobsledista do país e uma seleção construída a partir de um post no Facebook, um intercâmbio em Quebec e um programa social que liga o Morumbi ao Real Parque, em São Paulo. Um relato apurado de como o curling criou raízes num país sem inverno.'
+    }
+  },
+  {
+    id: 'curlings-greatest-shots',
+    href: '#/article/curlings-greatest-shots',
+    date: '2026-08-06',
+    en: {
+      title: 'Curling’s Greatest Shots: Eight Throws That Decided Everything',
+      desc: 'From Al Hackner’s impossible double in the 1985 Brier to Niklas Edin’s “Super Spinner” in 2023 — eight verified, era-spanning curling shots that decided championships, and a few times just astonished the world anyway.'
+    },
+    pt: null // Intentionally English-only — no Portuguese translation for this article.
+  },
+  {
     id: 'not-all-left-is-equal',
     href: '#/article/not-all-left-is-equal',
     date: '2026-07-15',

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Hidden Tug-of-War: How Payroll Taxes Shape Wage Growth Worldwide | Moolytics</title>
   <meta name="description" content="Whether the payroll tax burden falls on employers or employees dramatically alters wages and employment. Cross-country evidence from Colombia, OECD, Singapore, and more.">
+  <meta name="keywords" content="payroll taxes, employer payroll tax, employee payroll tax, tax incidence, wage growth, labor costs, payroll tax burden, competitiveness">
   <link rel="canonical" href="/article/employer-fines">
   <meta property="og:type" content="article">
   <meta property="og:title" content="The Hidden Tug-of-War: How Payroll Taxes Shape Wage Growth Worldwide">

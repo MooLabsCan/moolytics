@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Dual Cost of the Punitive System: When Prison Fails, Society Pays | Moolytics</title>
   <meta name="description" content="The law-abiding citizen is hit not once but multiple times by the prison system's inefficiency — as victim, as taxpayer, and again as victim when recidivism restarts the cycle.">
+  <meta name="keywords" content="Brazil prisons, punitive system, criminal justice reform, prison policy, public safety Brazil, incarceration costs, recidivism, social cost of prisons">
   <link rel="canonical" href="/article/society-failed-prisons">
   <meta property="og:type" content="article">
   <meta property="og:title" content="The Dual Cost of the Punitive System: When Prison Fails, Society Pays">

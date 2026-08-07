@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Policy vs Efficiency: A Scoreboard of Incentives | Moolytics</title>
   <meta name="description" content="Evaluation of Brazilian policy by administration and their microeconomic effect on market efficiency, social mobility, job creation, and wage growth — 2019 to 2025.">
+  <meta name="keywords" content="policy efficiency, market efficiency, incentives, public policy analysis, economic outcomes, jobs and wages, regulatory reform, mobility">
   <link rel="canonical" href="/article/policy-vs-efficiency">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Policy vs Efficiency: A Scoreboard of Incentives (Brazil 2019–2025)">

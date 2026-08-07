@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marx vs. George: The Historical Record — Version II | Moolytics</title>
   <meta name="description" content="The second, more historically faithful account of the 1887 debate between Karl Marx and Henry George. Marx as documented: dismissive, unfalsifiable, and finally silent.">
+  <meta name="keywords" content="Karl Marx, Henry George, Marx vs George, land value tax, political economy, Georgism, socialism, Progress and Poverty, Das Kapital, single tax">
   <link rel="canonical" href="/article/marx-vs-george-2">
   <meta property="og:type" content="article">
   <meta property="og:title" content="The Great Debate: Marx vs. George — Version II: The Historical Record">
