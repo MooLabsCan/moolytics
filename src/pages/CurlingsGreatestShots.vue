@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import CurlingIceAdCard from '../components/CurlingIceAdCard.vue'
 const props = defineProps({ lang: { type: String, default: 'en' }, id: { type: String, default: 'curlings-greatest-shots' } })
 
 const TITLES = {
@@ -107,7 +108,6 @@ const publishedLabel = computed(() => PUBLISHED_LABELS[props.lang] || PUBLISHED_
       </div>
     </header>
 
-    <template>
 <p>Curling looks, to the uninitiated, like a slow and gentle game: two teams sliding forty-pound stones down a sheet of ice toward a set of painted circles, brooms sweeping earnestly ahead of them. It is slow, in the way that chess is slow. It is gentle, in the way that a scalpel is gentle. Underneath the pleasantries — the handshakes, the “nice shot” murmured through gritted teeth — curling is a game of ruthless geometry, where a stone released a quarter-inch off line, or a half-second early on the release, misses by inches at the button and costs a championship.</p>
 <p>A few terms will help. A team’s rocks stop, ideally, inside “the house,” the set of concentric painted rings; the stone closest to the exact center, the “button,” is lying shot rock and counts for a point (or several, if teammates are also closer than anything the other team has). A “guard” is a stone left in front of the house to shield rocks behind it from being hit. The team that doesn’t throw last in an end has “the hammer” on the next one — the enormous advantage of getting the final say. A “takeout” removes an opponent’s stone from play; a “draw” is a stone thrown with just enough weight to stop inside the rings without touching anything. Everything else — doubles, raises, freezes, in-offs — is a variation on those two ideas, played at the outer edge of what a human hand and a curved sheet of ice can be trusted to do.</p>
 <p>Most competitive curling shots are not memorable. They are correct, which is a different thing. The shots that follow are the exceptions: the ones where a player looked at a nearly impossible geometry problem, under a championship’s worth of pressure, and solved it anyway. All eight are documented, dated, and attributable to a specific game — no folklore, no composite memories. They span thirty-eight years, four continents’ worth of curling nations, and both the men’s and women’s and mixed-doubles disciplines.</p>
@@ -142,7 +142,7 @@ const publishedLabel = computed(() => PUBLISHED_LABELS[props.lang] || PUBLISHED_
 <div style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:1px solid var(--color-border);border-radius:8px;background:var(--color-background-soft);">
   <p style="margin:0;font-size:0.95rem;line-height:1.6;"><strong>Want to try these angles yourself?</strong> Curling Ice, a free physics-based curling simulator for Android, iOS, and web, has rebuilt several of the shots above, including Hackner’s double and Schmirler’s in-off, as playable challenges. <a href="https://curling.liap.ca/install" target="_blank" rel="noopener">Play free at curling.liap.ca →</a></p>
 </div>
-    </template>
+<CurlingIceAdCard :lang="props.lang" />
   </article>
 </template>
 
