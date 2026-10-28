@@ -5,6 +5,32 @@
 
 export default [
   {
+    id: 'tax-wage-ceiling',
+    href: '#/article/tax-wage-ceiling',
+    date: '2026-10-28',
+    en: {
+      title: 'Six Countries, One Business: How Tax Systems Limit the Wages a Company Can Afford',
+      desc: 'Place six identical businesses in Brazil, France, Italy, Finland, Denmark and Switzerland, and consumption taxes plus employer-side charges alone produce very different ceilings on the gross salary each can afford to pay.'
+    },
+    pt: {
+      title: 'Seis Países, Uma Empresa: Como os Sistemas Tributários Limitam o Salário que uma Empresa Pode Pagar',
+      desc: 'Coloque seis empresas idênticas no Brasil, na França, na Itália, na Finlândia, na Dinamarca e na Suíça, e só os impostos sobre consumo e os encargos do empregador já produzem tetos muito diferentes para o salário bruto que cada uma consegue pagar.'
+    }
+  },
+  {
+    id: 'how-language-is-learned',
+    href: '#/article/how-language-is-learned',
+    date: '2026-08-14',
+    en: {
+      title: 'How a Language Is Actually Learned: The Arithmetic, the Evidence, and Why So Many Quit',
+      desc: 'How many words an adult actually needs, what immersion does and does not deliver, why spaced retrieval beats re-reading, and why streaks and points sit on a literature that says extrinsic rewards erode the motivation they are meant to supply.'
+    },
+    pt: {
+      title: 'Como um Idioma é Realmente Aprendido: A Aritmética, a Evidência e Por Que Tantos Desistem',
+      desc: 'Quantas palavras um adulto realmente precisa, o que a imersão entrega e o que não entrega, por que a evocação espaçada supera a releitura, e por que ofensivas e pontos se apoiam numa literatura que diz que recompensas extrínsecas corroem a motivação que deveriam fornecer.'
+    }
+  },
+  {
     id: 'brazil-curling',
     href: '#/article/brazil-curling',
     date: '2026-08-06',

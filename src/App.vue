@@ -17,6 +17,8 @@ import MarxVsGeorgeTitlePage from './pages/MarxVsGeorgeTitlePage.vue'
 import NotAllLeftIsEqual from './pages/NotAllLeftIsEqual.vue'
 import CurlingsGreatestShots from './pages/CurlingsGreatestShots.vue'
 import BrazilCurling from './pages/BrazilCurling.vue'
+import HowLanguageIsLearned from './pages/HowLanguageIsLearned.vue'
+import TaxWageCeiling from './pages/TaxWageCeiling.vue'
 import AdBanner from './components/AdBanner.vue'
 import AdSkyscraper from './components/AdSkyscraper.vue'
 
@@ -211,6 +213,8 @@ watch([route, params, lang], () => {
     <NotAllLeftIsEqual v-else-if="route === 'article' && params.id==='not-all-left-is-equal'" :lang="lang" :id="params.id" />
     <CurlingsGreatestShots v-else-if="route === 'article' && params.id==='curlings-greatest-shots'" :lang="lang" :id="params.id" />
     <BrazilCurling v-else-if="route === 'article' && params.id==='brazil-curling'" :lang="lang" :id="params.id" />
+    <TaxWageCeiling v-else-if="route === 'article' && params.id==='tax-wage-ceiling'" :lang="lang" :id="params.id" />
+    <HowLanguageIsLearned v-else-if="route === 'article' && params.id==='how-language-is-learned'" :lang="lang" :id="params.id" />
     <div v-else>Not Found</div>
     <AdBanner />
   </main>

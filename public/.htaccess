@@ -17,6 +17,8 @@ RewriteRule ^article/canadasabatage/?$ /canadasabatage.php [L,NC]
 RewriteRule ^article/finland-kok/?$ /finland-kok.php [L,NC]
 RewriteRule ^article/curlings-greatest-shots/?$ /curlings-greatest-shots.php [L,NC]
 RewriteRule ^article/brazil-curling/?$ /brazil-curling.php [L,NC]
+RewriteRule ^article/how-language-is-learned/?$ /how-language-is-learned.php [L,NC]
+RewriteRule ^article/tax-wage-ceiling/?$ /tax-wage-ceiling.php [L,NC]
 
 # SPA fallback: serve index.html for any path that is not a real file or directory
 RewriteCond %{REQUEST_FILENAME} !-f

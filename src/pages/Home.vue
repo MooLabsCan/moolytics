@@ -37,6 +37,7 @@ function formatDate(iso) {
 
 function getTopic(article) {
   if (SPORTS_IDS.has(article.id)) return props.lang === 'pt' ? 'Esportes' : 'Sports'
+  if (article.id.includes('language')) return props.lang === 'pt' ? 'Aprendizado' : 'Learning'
   if (article.id.includes('marx') || article.id.includes('george')) return props.lang === 'pt' ? 'Ideias' : 'Ideas'
   if (article.id.includes('tax') || article.id.includes('fines') || article.id.includes('estonia')) return props.lang === 'pt' ? 'Impostos' : 'Tax'
   if (article.id.includes('finland') || article.id.includes('canada')) return props.lang === 'pt' ? 'Mercados' : 'Markets'

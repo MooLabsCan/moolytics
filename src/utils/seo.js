@@ -14,6 +14,8 @@ const HOME_SEO = {
 }
 
 const ARTICLE_KEYWORDS = {
+  'tax-wage-ceiling': 'payroll taxes, employer payroll charges, consumption tax, VAT, wage ceiling, tax incidence, labour tax wedge, OECD Taxing Wages, Brazil payroll burden, FGTS, Brazil tax reform, Switzerland, Denmark, Finland, France, Italy',
+  'how-language-is-learned': 'how language is learned, second language acquisition, vocabulary size, word families, comprehensible input, spaced repetition, retrieval practice, language learning motivation, immersion, gamification, language app research, Krashen, Paul Nation, extramural English',
   'brazil-curling': 'Brazil curling, Brazilian curling team, curling in Brazil, Arena Ice Brasil, CBDG, World Curling, winter sports Brazil, mixed doubles curling, wheelchair curling Brazil, Brazil Youth Olympics curling',
   'curlings-greatest-shots': 'greatest curling shots, best curling shots, Al Hackner double, Sandra Schmirler shot, Jennifer Jones The Shot, Glenn Howard curling, John Shuster Olympic curling, Niklas Edin Super Spinner, curling history',
   'not-all-left-is-equal': 'social democracy, Nordic model, Brazil left politics, working class mobility, wage growth, redistribution, monopoly, economic mobility, labor markets',
@@ -29,6 +31,8 @@ const ARTICLE_KEYWORDS = {
 }
 
 const ARTICLE_SECTIONS = {
+  'tax-wage-ceiling': 'Tax Policy',
+  'how-language-is-learned': 'Learning & Cognition',
   'brazil-curling': 'Sports',
   'curlings-greatest-shots': 'Sports',
   'not-all-left-is-equal': 'Political Economy',
