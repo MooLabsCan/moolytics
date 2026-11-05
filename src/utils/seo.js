@@ -14,6 +14,7 @@ const HOME_SEO = {
 }
 
 const ARTICLE_KEYWORDS = {
+  'vocabi-language-learning': 'Vocabi, vocabulary app, build vocabulary, language learning app, learn a new language, spaced repetition, retrieval practice, language learning game, first 100 words, learn Portuguese, no streaks',
   'tax-wage-ceiling': 'payroll taxes, employer payroll charges, consumption tax, VAT, wage ceiling, tax incidence, labour tax wedge, OECD Taxing Wages, Brazil payroll burden, FGTS, Brazil tax reform, Switzerland, Denmark, Finland, France, Italy',
   'how-language-is-learned': 'how language is learned, second language acquisition, vocabulary size, word families, comprehensible input, spaced repetition, retrieval practice, language learning motivation, immersion, gamification, language app research, Krashen, Paul Nation, extramural English',
   'brazil-curling': 'Brazil curling, Brazilian curling team, curling in Brazil, Arena Ice Brasil, CBDG, World Curling, winter sports Brazil, mixed doubles curling, wheelchair curling Brazil, Brazil Youth Olympics curling',
@@ -31,6 +32,7 @@ const ARTICLE_KEYWORDS = {
 }
 
 const ARTICLE_SECTIONS = {
+  'vocabi-language-learning': 'Learning & Cognition',
   'tax-wage-ceiling': 'Tax Policy',
   'how-language-is-learned': 'Learning & Cognition',
   'brazil-curling': 'Sports',

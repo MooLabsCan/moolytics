@@ -5,6 +5,19 @@
 
 export default [
   {
+    id: 'vocabi-language-learning',
+    href: '#/article/vocabi-language-learning',
+    date: '2026-11-05',
+    en: {
+      title: 'On the Horizon: Vocabi Is a Fantastic New Way to Build a Vocabulary in a New Language',
+      desc: 'Vocabi turns each word you learn into a brick in a village you can walk through, with real spaced review underneath. What the young app gets right, and what it has not proved yet.'
+    },
+    pt: {
+      title: 'No Horizonte: Vocabi É uma Nova e Fantástica Maneira de Construir Vocabulário em Outro Idioma',
+      desc: 'O Vocabi transforma cada palavra aprendida em um tijolo de uma vila por onde você pode caminhar, com revisão espaçada de verdade por baixo. O que o jovem aplicativo acerta, e o que ainda não provou.'
+    }
+  },
+  {
     id: 'tax-wage-ceiling',
     href: '#/article/tax-wage-ceiling',
     date: '2026-10-28',
