@@ -1,8 +1,12 @@
 <script setup>
 import { computed } from 'vue'
 
-// Promotes the Vocabi essay "The First 2,000 Words". Same shape as
-// CurlingIceAdCard so the two sit together on a page.
+// Promotes the Vocabi essay "The First 2,000 Words".
+// The visual is the essay's argument: common words in rough frequency order, most common
+// first, set large and dark and fading as frequency drops. The first dozen sit
+// on honey, the colour Vocabi uses for words you've already collected.
+// English readers see Spanish; Portuguese readers see English, the language
+// they would be learning.
 // The essay lives on vocabi.ca/first-2000-words once Vocabi next deploys;
 // until then the Headley Wealth copy is the one that is live.
 const props = defineProps({
@@ -11,199 +15,167 @@ const props = defineProps({
 })
 
 const href = 'https://headleywealth.liap.ca/first-2000-words.html'
-const heroImage = '/images/first-2000-words.jpg'
-const logoImage = '/images/vocabi-icon-512.png'
+
+const WORDS = {
+  es: 'de la que el en y a los se no un por con una para es lo como más pero yo ya muy sí todo bien hay casa día tiempo vida mundo año agua hablar hombre noche ciudad amigo nuevo mujer comer libro grande perro nadar gracias',
+  en: 'the of and to a in is you that it he was for on are as with they at be this have from or one had by word but not what all were we when your can said there use each which she do how their if will up other about out many then them'
+}
 
 const copy = computed(() => {
   if (props.lang === 'pt') return {
-    label: 'Leitura recomendada · em inglês',
-    title: 'As Primeiras 2.000 Palavras',
-    kicker: 'E se ensinamos idiomas na ordem errada?',
-    body: 'Comece pelas palavras mais usadas, não pelas regras. A gramática vem depois, quando você já tem o que dizer. Um ensaio da equipe do Vocabi.',
-    cta: 'Ler o artigo',
-    detailA: 'Palavras primeiro',
-    detailB: 'Leitura de 5 min'
+    words: WORDS.en,
+    title: 'As primeiras 2.000 palavras',
+    body: 'E se ensinamos idiomas na ordem errada? Comece pelas palavras que as pessoas mais usam e deixe a gramática vir depois.',
+    by: 'Um ensaio da equipe do Vocabi, em inglês.',
+    cta: 'Ler o ensaio'
   }
-
   return {
-    label: 'Recommended read',
-    title: 'The First 2,000 Words',
-    kicker: "What if we've been teaching languages in the wrong order?",
-    body: 'Start with the words people actually use, not the rules. Grammar comes along once you have something to say. An essay from the Vocabi team.',
-    cta: 'Read the article',
-    detailA: 'Words first',
-    detailB: '5 min read'
+    words: WORDS.es,
+    title: 'The first 2,000 words',
+    body: "What if we've been teaching languages in the wrong order? Start with the words people use most, and let grammar follow.",
+    by: 'An essay from the Vocabi team.',
+    cta: 'Read the essay'
   }
 })
+
+// Size and ink fall with rank, roughly the way frequency does.
+const wall = computed(() => copy.value.words.split(' ').map((w, i) => ({
+  w,
+  got: i < 12,
+  size: (2.1 / (1 + i * 0.09) + 0.62).toFixed(2) + 'rem',
+  ink: Math.max(0.28, 1 - i * 0.016).toFixed(2)
+})))
 </script>
 
 <template>
   <aside class="words-ad" :class="`words-ad-${variant}`">
-    <a class="ad-media" :href="href" target="_blank" rel="noopener" :aria-label="copy.title">
-      <img class="ad-hero" :src="heroImage" alt="" loading="lazy">
-      <img class="ad-logo" :src="logoImage" alt="Vocabi logo" loading="lazy">
+    <a class="wall" :href="href" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+      <span
+        v-for="(item, i) in wall"
+        :key="i"
+        class="w"
+        :class="{ got: item.got }"
+        :style="{ fontSize: item.size, opacity: item.ink }"
+      >{{ item.w }}</span>
     </a>
 
-    <div class="ad-copy">
-      <p class="ad-label">{{ copy.label }}</p>
+    <div class="copy">
       <h2>{{ copy.title }}</h2>
-      <p class="ad-kicker">{{ copy.kicker }}</p>
-      <p class="ad-body">{{ copy.body }}</p>
-      <div class="ad-meta" aria-hidden="true">
-        <span>{{ copy.detailA }}</span>
-        <span>{{ copy.detailB }}</span>
-      </div>
-      <a class="ad-cta" :href="href" target="_blank" rel="noopener">{{ copy.cta }}</a>
+      <p class="body">{{ copy.body }}</p>
+      <p class="by">{{ copy.by }}</p>
+      <a class="cta" :href="href" target="_blank" rel="noopener">{{ copy.cta }}</a>
     </div>
   </aside>
 </template>
 
 <style scoped>
 .words-ad {
-  position: relative;
-  isolation: isolate;
+  --sky: #d9f0fc;
+  --navy: #0f3e66;
+  --honey: #fdeab9;
+  --leaf: #2d7a3e;
+  --display: 'Baloo 2', 'Trebuchet MS', system-ui, sans-serif;
+  background: var(--sky);
+  color: var(--navy);
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(15, 62, 102, 0.2);
-  border-radius: 8px;
-  background: linear-gradient(135deg, #fdf7ea, #eef7fd);
-  box-shadow: 0 14px 38px rgba(15, 62, 102, 0.1);
 }
 
 .words-ad-full {
   display: grid;
-  grid-template-columns: minmax(180px, 0.82fr) minmax(0, 1fr);
-  gap: 1.2rem;
-  align-items: center;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   margin: 2.4rem 0 0;
-  padding: 1rem;
 }
 
 .words-ad-compact {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: 0.95rem;
 }
 
-.ad-media {
-  position: relative;
-  display: block;
-  min-height: 190px;
+/* The wall: words flow like a ranked list read left to right. */
+.wall {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.1rem 0.42rem;
+  padding: 1.1rem 1.2rem;
+  max-height: 15.5rem;
   overflow: hidden;
-  border-radius: 7px;
-  background: #d9f0fc;
+  background: #fff;
+  text-decoration: none;
+  color: var(--navy);
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 1.05;
+  /* the list keeps going; let it fade rather than stop */
+  mask-image: linear-gradient(180deg, #000 62%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent);
 }
 
-.words-ad-compact .ad-media {
-  min-height: 168px;
-  margin-bottom: 0.95rem;
+.words-ad-compact .wall {
+  max-height: 11rem;
 }
 
-.ad-hero {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.w {
+  padding: 0 0.18em;
+  border-radius: 0.28em;
 }
 
-.ad-logo {
-  position: absolute;
-  left: 0.75rem;
-  bottom: 0.75rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(15, 62, 102, 0.28);
+.w.got {
+  background: var(--honey);
 }
 
-.ad-copy {
+.copy {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.45rem;
-  padding: 0.2rem 0.2rem 0.2rem 0;
-}
-
-.words-ad-compact .ad-copy {
-  padding: 0;
-}
-
-.ad-label,
-.ad-meta span {
-  font-size: 0.67rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.ad-label {
-  margin: 0;
-  color: #2d7a3e;
-  font-weight: 800;
-}
-
-.ad-copy h2 {
-  margin: 0;
-  color: #0f3e66;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.45rem, 3vw, 2rem);
-  font-weight: 800;
-  line-height: 1.04;
-}
-
-.words-ad-compact .ad-copy h2 {
-  font-size: 1.45rem;
-}
-
-.ad-kicker {
-  margin: 0;
-  color: #174a72;
-  font-size: 0.92rem;
-  font-weight: 800;
-}
-
-.ad-body {
-  margin: 0;
-  color: rgba(43, 33, 24, 0.78);
-  font-size: 0.9rem;
-  line-height: 1.56;
-}
-
-.ad-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.15rem;
-}
-
-.ad-meta span {
-  color: #0f3e66;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(15, 62, 102, 0.18);
-  border-radius: 4px;
-  padding: 0.12rem 0.42rem;
-  font-weight: 700;
-}
-
-.ad-cta {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  margin-top: 0.35rem;
-  min-height: 36px;
-  padding: 0.48rem 0.9rem;
-  border-radius: 6px;
-  background: #2d7a3e;
-  color: #fff;
-  font-size: 0.82rem;
-  font-weight: 800;
-  text-decoration: none;
-  box-shadow: 0 8px 18px rgba(45, 122, 62, 0.22);
+  padding: 1.4rem 1.5rem 1.5rem;
 }
 
-.ad-cta:hover {
+.copy h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+  line-height: 1;
+  color: var(--navy);
+  text-wrap: balance;
+}
+
+.body {
+  margin: 0.7rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  max-width: 34ch;
+}
+
+.by {
+  margin: 0.55rem 0 0;
+  font-size: 0.85rem;
+  color: #174a72;
+  opacity: 0.8;
+}
+
+.cta {
+  margin-top: 1rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.cta:hover {
   background: #23612f;
+}
+
+.cta:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
 }
 
 @media (max-width: 640px) {
@@ -211,8 +183,8 @@ const copy = computed(() => {
     grid-template-columns: 1fr;
   }
 
-  .ad-media {
-    min-height: 170px;
+  .wall {
+    max-height: 11rem;
   }
 }
 </style>
