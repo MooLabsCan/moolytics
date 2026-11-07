@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import First2000WordsAdCard from '../components/First2000WordsAdCard.vue'
 
 const props = defineProps({ lang: { type: String, default: 'en' }, id: { type: String, default: 'vocabi-language-learning' } })
 
@@ -228,6 +229,8 @@ const formattedDate = computed(() => {
         <p><strong>Experimente você mesmo.</strong> Comece sua primeira vila em <a href="https://vocabi.ca/" target="_blank" rel="noopener">vocabi.ca</a>, leia mais na página <a href="https://vocabi.ca/about" target="_blank" rel="noopener">Sobre o Vocabi</a> ou <a href="https://play.google.com/store/apps/details?id=ca.liap.vocabi.twa" target="_blank" rel="noopener">baixe no Google Play</a>.</p>
       </div>
     </template>
+
+    <First2000WordsAdCard :lang="props.lang" />
 
     <h2>{{ props.lang==='pt' ? 'Fontes' : 'Sources' }}</h2>
     <ul class="sources">

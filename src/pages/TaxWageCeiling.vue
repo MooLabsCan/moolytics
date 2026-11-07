@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import First2000WordsAdCard from '../components/First2000WordsAdCard.vue'
 const props = defineProps({ lang: { type: String, default: 'en' }, id: { type: String, default: 'tax-wage-ceiling' } })
 
 const TITLES = {
@@ -275,6 +276,8 @@ const publishedLabel = computed(() => PUBLISHED_LABELS[props.lang] || PUBLISHED_
 <p>Um sistema tributário pode redistribuir a renda depois que ela foi ganha. Ele também pode mudar as condições em que essa renda é ganha.</p>
 <p>Essa distinção deveria ser central em qualquer discussão séria sobre salários, emprego e política tributária.</p>
     </template>
+
+    <First2000WordsAdCard :lang="props.lang" />
   </article>
 </template>
 

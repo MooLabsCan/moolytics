@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, computed, ref, onBeforeUnmount } from 'vue'
+import First2000WordsAdCard from '../components/First2000WordsAdCard.vue'
 const props = defineProps({ lang: { type: String, default: 'en' }, id: { type: String, default: 'george-east-west' } })
 
 onMounted(() => {
@@ -440,6 +441,7 @@ const encodedText = computed(() => encodeURIComponent(shareText.value))
 
   </template>
 
+  <First2000WordsAdCard :lang="props.lang" />
 </article>
   <footer>
     <p>© 2025  All rights reserved. This article is for informational purposes only.</p>

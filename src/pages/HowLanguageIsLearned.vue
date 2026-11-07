@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import First2000WordsAdCard from '../components/First2000WordsAdCard.vue'
 import VocabiAdCard from '../components/VocabiAdCard.vue'
 
 const props = defineProps({ lang: { type: String, default: 'en' }, id: { type: String, default: 'how-language-is-learned' } })
@@ -174,6 +175,8 @@ const formattedDate = computed(() => {
       <p>We know with reasonable confidence what builds vocabulary: spaced retrieval with feedback, input graded to the learner, and volume. We know what erodes motivation: rewards attached to compliance rather than to capability. We know that immersion is a multiplier on existing knowledge rather than a substitute for it. And we know that the largest real-world vocabularies in the research literature belong to teenagers who spent thousands of unsupervised hours doing something they enjoyed in a language that was not theirs.</p>
       <p>What nobody has shown is which product design converts that knowledge into a person who, three years from now, can read a novel in a language they did not have. The design space is wide open, and it is being explored mostly by companies optimising for daily active users. There is room for someone to optimise for the other thing.</p>
 
+      <First2000WordsAdCard :lang="props.lang" />
+
       <h2>Sources</h2>
       <ul class="sources">
         <li>Nation, I.S.P. (2006). How large a vocabulary is needed for reading and listening? <em>Canadian Modern Language Review</em>, 63(1). <a href="https://www.lextutor.ca/cover/papers/nation_2006.pdf" target="_blank" rel="noopener">PDF</a></li>
@@ -279,6 +282,8 @@ const formattedDate = computed(() => {
       <h2>O Resumo Honesto</h2>
       <p>Sabemos com confiança razoável o que constrói vocabulário: evocação espaçada com feedback, insumo graduado ao aprendiz e volume. Sabemos o que corrói a motivação: recompensas atreladas a obediência em vez de a capacidade. Sabemos que a imersão é um multiplicador de conhecimento existente, e não um substituto dele. E sabemos que os maiores vocabulários reais da literatura de pesquisa pertencem a adolescentes que passaram milhares de horas não supervisionadas fazendo algo de que gostavam num idioma que não era o deles.</p>
       <p>O que ninguém mostrou é qual desenho de produto converte esse conhecimento em uma pessoa que, daqui a três anos, consegue ler um romance num idioma que não tinha. O espaço de projeto está totalmente aberto, e vem sendo explorado sobretudo por empresas que otimizam para usuários ativos diários. Há lugar para alguém otimizar a outra coisa.</p>
+
+      <First2000WordsAdCard :lang="props.lang" />
 
       <h2>Fontes</h2>
       <ul class="sources">
